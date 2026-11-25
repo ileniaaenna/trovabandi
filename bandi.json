@@ -505,38 +505,6 @@
    "special": "cds"
   },
   {
-   "nome": "Fondo GreenTour",
-   "ente": "Ministero del Turismo – Invitalia",
-   "forma": [
-    "fp",
-    "tasso"
-   ],
-   "formaTxt": "Fondo perduto (base 30%) + finanziamento agevolato",
-   "chiude": "2026-09-30",
-   "statoTxt": "Chiuso il 30/09/2026 – monitorare la prossima edizione",
-   "sogg": [
-    "imp",
-    "gr",
-    "pmii"
-   ],
-   "set": [
-    "tur"
-   ],
-   "spese": [
-    "en",
-    "mur",
-    "sw",
-    "mac"
-   ],
-   "min": 1000000,
-   "max": 15000000,
-   "link": "https://www.invitalia.it/incentivi-e-strumenti/fondo-greentour",
-   "note": [
-    "Riqualificazione energetica e digitale di imprese turistiche, wellness e termali."
-   ],
-   "id": "fondo-greentour"
-  },
-  {
    "nome": "ZES Unica – credito d'imposta",
    "ente": "Agevolazione fiscale",
    "forma": [
@@ -574,37 +542,6 @@
     "Una delle poche misure che copre anche l'acquisto di immobili strumentali."
    ],
    "id": "zes-unica-credito-d-imposta"
-  },
-  {
-   "nome": "Startup innovative early stage",
-   "ente": "Regione Lombardia",
-   "forma": [
-    "fp"
-   ],
-   "formaTxt": "Fondo perduto 80%, fino a 1,5 milioni",
-   "apre": "2026-09-28",
-   "chiude": "2026-11-25",
-   "statoTxt": "Chiude il 25/11/2026 ore 15",
-   "sogg": [
-    "start"
-   ],
-   "reg": [
-    "Lombardia"
-   ],
-   "spese": [
-    "rs",
-    "sw",
-    "cons",
-    "pers",
-    "mac"
-   ],
-   "max": 1500000,
-   "pre": true,
-   "link": "https://www.bandi.regione.lombardia.it",
-   "note": [
-    "Sperimentazione e sviluppo tecnologico, riserva per progetti green."
-   ],
-   "id": "startup-innovative-early-stage"
   },
   {
    "nome": "Nuova impresa 2026",
@@ -753,7 +690,7 @@
    ],
    "formaTxt": "Fondo perduto 65%, fino a 130.000 €",
    "chiude": "2026-05-28",
-   "statoTxt": "Edizione 2025 chiusa (domande 13/04–28/05/2026) – attesa la nuova edizione",
+   "statoTxt": "Bando annuale: edizione 2025 chiusa, nuova edizione attesa (avviso di solito a fine anno)",
    "sogg": [
     "imp",
     "start",
@@ -769,7 +706,8 @@
    "note": [
     "Progetti per salute e sicurezza sul lavoro, rimozione amianto, macchine agricole.",
     "Aperto anche alle imprese individuali iscritte in Camera di commercio; assegnazione con click day."
-   ]
+   ],
+   "ciclico": true
   },
   {
    "id": "voucher-3i",
