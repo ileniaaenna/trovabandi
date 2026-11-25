@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Trova bandi – Ilenia Enna</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+/* VOICE: lo stesso di ileniaenna.com, diretto e professionale, in "tu"
+   IDEA: una sezione in più del sito: strumento di pre-istruttoria bandi
+   PICTURE: il modulo stesso, con l'esito grande accanto
+   COLOUR and TYPE: scala di grigi del sito (oklch 18–97%), CTA bianca; Space Grotesk 600 + Manrope
+   LAYOUT: header del sito, hero con etichette, modulo a sinistra ed esito a destra, footer del sito */
+:root{color-scheme:dark;--bg:oklch(18% 0 0);--sec:oklch(20.5% 0 0);--card:oklch(23.5% 0 0);--acc:oklch(29% 0 0);--line:oklch(38% 0 0);--mute:oklch(77% 0 0);--ink:oklch(97% 0 0);--white:oklch(100% 0 0);--dark:oklch(16% 0 0);--tagline:oklab(0.92 0 0 / .3)}
+*{box-sizing:border-box;min-width:0}
+body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.6 Manrope,system-ui,sans-serif;overflow-x:clip}
+h1,h2,h3,.big,.brand{font-family:"Space Grotesk",system-ui,sans-serif;font-weight:600}
+a{color:inherit}
+.wrap{max-width:1240px;margin:0 auto;padding:0 max(4vw,16px)}
+.top{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:24px 0}
+.brand{text-decoration:none;font-size:18px}
+.top nav{display:flex;align-items:center;gap:24px;font-size:14px}
+.top nav a{text-decoration:none;color:var(--mute)}.top nav a:hover{color:var(--ink)}
+.btn,button{display:inline-flex;align-items:center;justify-content:center;font:600 14px Manrope,sans-serif;min-height:44px;padding:8px 18px;border-radius:2px;border:1px solid var(--white);background:var(--white);color:var(--dark);cursor:pointer;text-decoration:none}
+.btn:hover,button:hover{background:oklch(87% 0 0)}
+.top nav a.btn{color:var(--dark)}
+button.ghost,.btn.ghost{background:transparent;color:var(--ink);border-color:var(--line)}
+button.ghost:hover{background:var(--acc)}
+button.small{min-height:36px;padding:4px 12px;font-size:13px}
+@media(max-width:600px){.top nav a:not(.btn){display:none}}
+.hero-s{padding:clamp(24px,5vw,64px) 0 clamp(24px,4vw,40px)}
+.tags{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:20px}
+.tag{font-size:12px;font-weight:600;text-transform:uppercase;padding:6px 12px;background:var(--acc);border:1px solid var(--tagline)}
+h1{font-size:clamp(34px,5.4vw,60px);line-height:1.1;margin:0;max-width:18ch;text-wrap:balance}
+h1 em{font-style:normal;color:var(--white)}
+.sub{color:var(--mute);margin:18px 0 0;max-width:62ch;font-size:17px}
+.band{background:var(--sec);border-top:1px solid var(--line);padding:clamp(24px,4vw,48px) 0}
+h2{font-size:22px;margin:0 0 4px}
+.eyebrow{font-size:12px;font-weight:600;text-transform:uppercase;color:var(--mute);margin:0 0 6px}
+.grid{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.15fr);gap:28px;align-items:start}
+@media(max-width:900px){.grid{grid-template-columns:minmax(0,1fr)}}
+.box{border:1px solid var(--line);background:var(--bg);padding:22px;margin-bottom:16px}
+.hint{font-size:14px;color:var(--mute);margin:0 0 8px}
+label{display:block;font-size:14px;color:var(--mute);margin:12px 0 4px}
+select,input[type=text],input[type=number],textarea{width:100%;font:16px Manrope,sans-serif;padding:10px 12px;min-height:44px;border:1px solid var(--line);border-radius:2px;background:var(--card);color:var(--ink)}
+:focus-visible{outline:2px solid var(--white);outline-offset:2px}
+.row{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:12px}
+@media(max-width:480px){.row{grid-template-columns:minmax(0,1fr)}}
+.grp{font-weight:600;font-size:12px;text-transform:uppercase;margin:16px 0 8px;color:var(--mute)}
+.chips{display:flex;flex-wrap:wrap;gap:8px}
+.chip{position:relative;margin:0}
+.chip input{position:absolute;opacity:0;inset:0}
+.chip span{display:inline-flex;align-items:center;min-height:40px;padding:6px 14px;border:1px solid var(--line);border-radius:2px;font-size:14px;cursor:pointer;background:var(--card);color:var(--ink)}
+.chip input:checked+span{background:var(--white);color:var(--dark);border-color:var(--white);font-weight:600}
+.chip input:focus-visible+span{outline:2px solid var(--white);outline-offset:2px}
+.sticky{position:sticky;top:16px}
+@media(max-width:900px){.sticky{position:static}}
+.hero{background:var(--card);border:1px solid var(--line);padding:20px 22px;display:grid;grid-template-columns:auto minmax(0,1fr);gap:4px 18px;align-items:center}
+.big{font-size:clamp(52px,7vw,76px);line-height:1;grid-row:span 2;color:var(--white)}
+.hero .big{font-size:clamp(52px,7vw,76px);color:var(--white)}.hero b{font-size:18px;font-family:"Space Grotesk",sans-serif;font-weight:600}.hero span{font-size:14px;color:var(--mute)}
+.tools{display:flex;flex-wrap:wrap;gap:8px;margin:14px 0}
+.card{border:1px solid var(--line);padding:18px;margin-top:12px;background:var(--card)}
+.card h3{margin:0;font-size:19px;line-height:1.25}
+.meta{display:flex;flex-wrap:wrap;gap:6px;margin:10px 0}
+.pill{font-size:11px;font-weight:600;text-transform:uppercase;padding:5px 10px;border:1px solid var(--tagline);background:var(--acc);white-space:nowrap}
+.l2{background:var(--white);color:var(--dark);border-color:var(--white)}
+.l1{background:transparent;color:var(--white);border-color:var(--white)}
+.l0{background:transparent;color:var(--mute);border-color:var(--line)}
+.card.off{opacity:.6}
+.card ul{margin:8px 0 0;padding-left:18px}.card li{margin:3px 0}
+.cov{font-size:14px;color:var(--mute);margin:4px 0 0}
+details{margin-top:16px}
+summary{cursor:pointer;font-weight:600;min-height:44px;display:flex;align-items:center}
+.saved{display:flex;flex-wrap:wrap;gap:8px}
+.note{font-size:13px;color:var(--mute);margin-top:18px}
+.cta{border:1px solid var(--line);background:var(--bg);padding:clamp(22px,4vw,40px);display:flex;flex-wrap:wrap;gap:16px 32px;align-items:center;justify-content:space-between;margin-top:clamp(28px,4vw,48px)}
+.cta h2{font-size:clamp(24px,3vw,32px);line-height:1.15;max-width:22ch;margin:0}
+.cta p{color:var(--mute);margin:8px 0 0;max-width:52ch}
+footer{border-top:1px solid var(--line);padding:24px 0;font-size:14px;color:var(--mute)}
+footer a{text-decoration:none}footer a:hover{color:var(--ink)}
+.toast{position:fixed;left:50%;bottom:20px;transform:translateX(-50%);background:var(--white);color:var(--dark);padding:10px 16px;border-radius:2px;font-size:14px;font-weight:600;opacity:0;transition:opacity .2s;pointer-events:none}
+.toast.on{opacity:1}
+@media(prefers-reduced-motion:reduce){.toast{transition:none}}
+</style>
+</head>
+<body>
+<div class="wrap">
+<header class="top">
+  <a class="brand" href="https://ileniaenna.com">Ilenia Enna</a>
+  <nav><a href="https://ileniaenna.com/#consulenze">Consulenze</a><a href="https://ileniaenna.com/#metodo">Metodo</a><a class="btn" href="https://ileniaenna.com/#contatti">Prenota una call</a></nav>
+</header>
+<section class="hero-s">
+  <div class="tags"><span class="tag">Bandi</span><span class="tag">Finanza agevolata</span><span class="tag">Startup</span><span class="tag">PMI</span></div>
+  <h1>Quale bando fa per te? <em>Scoprilo in due minuti.</em></h1>
+  <p class="sub">Raccontami chi sei e su cosa vuoi investire: ti mostro subito le misure compatibili, a quali condizioni e con quali scadenze.</p>
+</section>
+</div>
+<div class="band"><div class="wrap">
+
+<div class="grid">
+<form id="f" autocomplete="off">
+  <div class="box">
+    <p class="eyebrow">Passo 1</p><h2>Chi sei</h2>
+    <label for="cliente">Nome pratica / cliente</label>
+    <input type="text" id="cliente" placeholder="Es. Rossi Srl – nuovo impianto">
+    <div class="row">
+      <div><label for="sogg">Tipo di soggetto</label>
+        <select id="sogg">
+          <option value="asp">Aspirante imprenditore / impresa da costituire</option>
+          <option value="prof">Libero professionista / lavoratore autonomo</option>
+          <option value="imp" selected>Impresa (PMI)</option>
+          <option value="start">Startup innovativa</option>
+          <option value="pmii">PMI innovativa</option>
+          <option value="gr">Grande impresa</option>
+          <option value="ets">Ente del Terzo Settore</option>
+        </select></div>
+      <div><label for="dim">Dimensione</label>
+        <select id="dim"><option value="micro">Micro (&lt;10 addetti)</option><option value="piccola" selected>Piccola (&lt;50)</option><option value="media">Media (&lt;250)</option><option value="grande">Grande</option></select></div>
+    </div>
+    <div class="row">
+      <div><label for="anni">Anni dalla costituzione</label><input type="number" id="anni" min="0" max="150" value="3"></div>
+      <div><label for="regione">Regione della sede operativa</label><select id="regione"></select></div>
+    </div>
+    <label for="settore">Settore</label>
+    <select id="settore">
+      <option value="manif">Manifattura / artigianato</option>
+      <option value="serv" selected>Servizi alle imprese</option>
+      <option value="ict">ICT / digitale</option>
+      <option value="comm">Commercio</option>
+      <option value="tur">Turismo, ristorazione, benessere</option>
+      <option value="agri">Agricoltura / agroalimentare</option>
+      <option value="edil">Edilizia / immobiliare</option>
+      <option value="altro">Altro</option>
+    </select>
+    <label>Caratteristiche</label>
+    <div class="chips">
+      <label class="chip"><input type="checkbox" id="gf"><span>Soci in maggioranza donne o under 35</span></label>
+      <label class="chip"><input type="checkbox" id="u35"><span>Under 35 disoccupato/inoccupato</span></label>
+      <label class="chip"><input type="checkbox" id="export"><span>Vende o vuole vendere all'estero</span></label>
+      <label class="chip"><input type="checkbox" id="utile"><span>Ha reddito imponibile (utili)</span></label>
+    </div>
+  </div>
+
+  <div class="box">
+    <p class="eyebrow">Passo 2</p><h2>Tempi e budget</h2>
+    <div class="row">
+      <div><label for="entro">Domanda da presentare entro</label>
+        <select id="entro"><option value="1">1 mese</option><option value="3" selected>3 mesi</option><option value="6">6 mesi</option><option value="12">12 mesi</option></select></div>
+      <div><label for="importo">Investimento previsto (€)</label><input type="number" id="importo" min="0" step="10000" value="300000"></div>
+    </div>
+    <label>Stato del progetto</label>
+    <div class="chips"><label class="chip"><input type="checkbox" id="avviato"><span>Spese già avviate o ordinate</span></label></div>
+  </div>
+
+  <div class="box">
+    <p class="eyebrow">Passo 3</p><h2>Su cosa investi</h2>
+    <p class="hint">Seleziona tutto quello che serve al progetto.</p>
+    <div id="spese"></div>
+    <div class="grp">Forma di agevolazione preferita (facoltativo)</div>
+    <div class="chips" id="forme"></div>
+  </div>
+</form>
+
+<section class="sticky" aria-live="polite">
+  <div class="hero"><span class="big" id="n">0</span><b id="nl">bandi compatibili e aperti</b><span id="ns"></span></div>
+  <div class="tools">
+    <button type="button" id="save">Salva pratica</button>
+    <button type="button" class="ghost" id="copy">Copia riepilogo</button>
+    <button type="button" class="ghost" id="reset">Nuova pratica</button>
+  </div>
+  <div class="saved" id="saved"></div>
+  <div class="filt chips" style="margin-top:12px">
+    <label class="chip"><input type="checkbox" id="solofp"><span>Solo fondo perduto</span></label>
+    <label class="chip"><input type="checkbox" id="hide0" checked><span>Nascondi non compatibili</span></label>
+  </div>
+  <div id="out"><div class="card">Caricamento bandi…</div></div>
+
+  <details>
+    <summary>Aggiungi un bando che hai trovato</summary>
+    <div class="box" style="margin-top:8px">
+      <label for="cbNome">Nome del bando</label><input type="text" id="cbNome">
+      <div class="row">
+        <div><label for="cbReg">Regione</label><select id="cbReg"></select></div>
+        <div><label for="cbChiude">Scadenza (se c'è)</label><input type="text" id="cbChiude" placeholder="gg/mm/aaaa"></div>
+      </div>
+      <label for="cbLink">Link</label><input type="text" id="cbLink" placeholder="https://…">
+      <label for="cbNote">Note (requisiti, % contributo)</label><textarea id="cbNote" rows="3"></textarea>
+      <div class="grp">Cosa copre</div><div class="chips" id="cbSpese"></div>
+      <div class="tools"><button type="button" id="cbAdd">Aggiungi bando</button></div>
+    </div>
+  </details>
+  <p class="note">Dati aggiornati al <span id="agg">…</span>. È un primo filtro: prima della domanda verifica sempre testo del bando, scadenze, dotazione residua e regole sugli aiuti di Stato (de minimis / GBER). Pratiche e bandi aggiunti restano salvati solo in questo browser.</p>
+</section>
+</div>
+<div class="cta">
+  <div><h2>Vuoi una verifica completa del tuo progetto?</h2><p>Questo strumento è un primo filtro. In una call guardiamo insieme requisiti, tempi e strategia per presentare la domanda giusta.</p></div>
+  <a class="btn" href="https://ileniaenna.com/#contatti">Parliamone in una call gratuita</a>
+</div>
+</div></div>
+<div class="wrap"><footer>© 2026 Ilenia Enna · <a href="mailto:consulting@ileniaenna.com">consulting@ileniaenna.com</a> · <a href="https://www.linkedin.com/in/ilenia-enna" target="_blank" rel="noopener">LinkedIn</a></footer></div>
+<div class="toast" id="toast"></div>
+
+<script>
+{
+const REG=["Abruzzo","Basilicata","Calabria","Campania","Emilia-Romagna","Friuli Venezia Giulia","Lazio","Liguria","Lombardia","Marche","Molise","Piemonte","Puglia","Sardegna","Sicilia","Toscana","Trentino-Alto Adige","Umbria","Valle d'Aosta","Veneto"];
+const SUD=["Abruzzo","Basilicata","Calabria","Campania","Molise","Puglia","Sardegna","Sicilia"];
+const CN=REG.filter(r=>!SUD.includes(r));
+const SPESE=[["Immobilizzazioni materiali",[["mac","Macchinari, impianti, attrezzature"],["b40","Beni 4.0 / automazione"],["hw","Hardware e arredi"]]],
+ ["Immobilizzazioni immateriali",[["sw","Software, digitale, AI"],["ip","Brevetti, marchi, design"],["cons","Consulenze e servizi"],["rs","Ricerca e sviluppo"],["form","Formazione"],["intl","Internazionalizzazione"]]],
+ ["Immobili",[["acq","Acquisto immobile"],["mur","Opere murarie e ristrutturazione"],["en","Efficienza energetica e rinnovabili"]]],
+ ["Altro",[["circ","Liquidità e capitale circolante"],["pers","Personale e assunzioni"],["sic","Sicurezza sul lavoro"]]]];
+const SL=Object.fromEntries(SPESE.flatMap(g=>g[1]));
+const FORME=[["fp","Fondo perduto"],["tasso","Finanziamento agevolato"],["fisc","Credito d'imposta / fiscale"],["gar","Garanzia"]];
+const FL=Object.fromEntries(FORME);
+const IMPRESE=["imp","start","pmii","gr"],PMI=["micro","piccola","media"],MP=["micro","piccola"];
+
+let B=[],AGG="";
+const SPECIAL={
+ on(p){const r=[];let l=2;if(p.anni<3&&p.importo>1500000){l=1;r.push("Sotto i 3 anni il programma massimo è 1,5 milioni.")}
+  if(p.spese.includes("mur"))r.push("Opere murarie fino al 30% dell'investimento.");
+  if(p.spese.includes("acq")){if(p.anni>=3&&p.settore==="tur")r.push("Acquisto immobile ammesso (solo turismo) fino al 40%.");else{l=1;r.push("Acquisto immobile ammesso solo nel turismo e per società con 3–5 anni.")}}return[l,r]},
+ cds(p){const ridotta=["agri","tur"].includes(p.settore);const s=ridotta?7500000:20000000;
+  return p.importo<s?[0,[`Soglia minima ${eur(s)}${ridotta?" (agroalimentare / turismo in strutture dismesse o aree interne)":""}.`]]:[2,["Programmi di grandi dimensioni, procedura lunga e negoziata."]]}
+};
+
+const $=id=>document.getElementById(id);
+const esc=s=>String(s??"").replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
+const eur=n=>new Intl.NumberFormat("it-IT",{style:"currency",currency:"EUR",maximumFractionDigits:0}).format(n);
+const pd=s=>{if(!s)return null;const[a,m,d]=s.split("-").map(Number);return new Date(a,m-1,d,23,59)};
+const fd=d=>d.toLocaleDateString("it-IT",{day:"numeric",month:"short",year:"numeric"});
+const store={get(k,d){try{return JSON.parse(localStorage.getItem(k))??d}catch(e){return d}},set(k,v){try{localStorage.setItem(k,JSON.stringify(v));return true}catch(e){return false}}};
+const SOGG={asp:"aspiranti imprenditori",prof:"professionisti",imp:"PMI",start:"startup innovative",pmii:"PMI innovative",gr:"grandi imprese",ets:"Terzo Settore"};
+const LV=["Non compatibile","Possibile con condizioni","Compatibile"];
+
+function prof(){const v=id=>$(id).value,c=id=>$(id).checked;
+ return{cliente:v("cliente").trim(),sogg:v("sogg"),dim:v("dim"),anni:+v("anni")||0,regione:v("regione"),settore:v("settore"),gf:c("gf"),u35:c("u35"),export:c("export"),utile:c("utile"),
+ entro:+v("entro"),importo:+v("importo")||0,avviato:c("avviato"),spese:[...document.querySelectorAll("#spese input:checked")].map(i=>i.value),forme:[...document.querySelectorAll("#forme input:checked")].map(i=>i.value)}}
+function apply(p){["cliente","sogg","dim","anni","regione","settore","entro","importo"].forEach(k=>$(k).value=p[k]);["gf","u35","export","utile","avviato"].forEach(k=>$(k).checked=!!p[k]);
+ document.querySelectorAll("#spese input").forEach(i=>i.checked=p.spese.includes(i.value));document.querySelectorAll("#forme input").forEach(i=>i.checked=(p.forme||[]).includes(i.value))}
+
+function stato(b,p){const now=new Date(),ap=pd(b.apre),ch=pd(b.chiude),lim=new Date();lim.setMonth(lim.getMonth()+p.entro);
+ if(ch&&ch<now)return{k:"chiuso"};if(ap&&ap>now)return{k:"prossimo",ap,late:ap>lim};return{k:"aperto",ch,urg:ch&&(ch-now)<14*864e5}}
+
+function check(b,p){const r=[];let l=2;const no=t=>{l=0;r.push(t)},cond=t=>{l=Math.min(l,1);r.push(t)};
+ if(b.sogg&&!b.sogg.includes(p.sogg))no(`Riservato a: ${b.sogg.map(s=>SOGG[s]).join(", ")}.`);
+ if(b.dim&&!b.dim.includes(p.dim)&&p.sogg!=="asp")no(`Solo imprese ${b.dim.join(", ")}.`);
+ if(b.anniMax!=null&&p.anni>b.anniMax)no(`Solo soggetti costituiti da non più di ${b.anniMax} ${b.anniMax===1?"anno":"anni"}.`);
+ if(b.reg&&!b.reg.includes(p.regione))no(`Solo in: ${b.reg.length>4?b.reg.length+" regioni ("+(b.reg.includes("Sicilia")?"Mezzogiorno":"Centro-Nord")+")":b.reg.join(", ")}.`);
+ if(b.set&&!b.set.includes(p.settore))no("Riservato al settore turistico.");
+ for(const k in b.need||{})if(!p[k])no(b.need[k]);
+ const hit=b.spese.filter(s=>p.spese.includes(s));
+ if(!p.spese.length)cond("Seleziona le spese del progetto per una verifica precisa.");else if(!hit.length)no(`Non copre le spese selezionate (copre: ${b.spese.map(s=>SL[s]).join(", ")}).`);
+ else{const miss=p.spese.filter(s=>!b.spese.includes(s));if(miss.length)r.push(`Non coperte: ${miss.map(s=>SL[s]).join(", ")}.`)}
+ if(b.min&&p.importo<b.min)cond(`Investimento minimo ${eur(b.min)}.`);if(b.max&&p.importo>b.max)cond(`Investimento massimo ${eur(b.max)}.`);
+ if(p.forme.length&&!b.forma.some(f=>p.forme.includes(f)))cond("Non corrisponde alla forma di agevolazione preferita.");
+ if(p.avviato&&b.pre)cond("Le spese devono partire dopo la domanda: quelle già avviate non sono ammesse.");
+ if(b.special&&SPECIAL[b.special]&&l>0){const[xl,xr]=SPECIAL[b.special](p);l=Math.min(l,xl);r.push(...xr)}
+ const st=stato(b,p);
+ if(st.k==="prossimo"){if(st.late)cond(`Apre il ${fd(st.ap)}, dopo la finestra che hai indicato.`);else r.push(`Apre il ${fd(st.ap)}: prepara la domanda.`)}
+ if(st.urg&&st.ch)r.push(`Scade il ${fd(st.ch)}: urgente.`);
+ return{b,l,r:r.concat(b.note||[]),st}}
+
+let custom=store.get("tb2_custom",[]);
+function results(p){
+ let res=B.filter(b=>!b.reg||b.reg.includes(p.regione)||b.reg.length>1).map(b=>check(b,p));
+ if(!["Lombardia","Emilia-Romagna"].includes(p.regione))res.push({b:{nome:`Bandi regionali e camerali – ${p.regione}`,ente:"Regione e Camera di commercio",forma:[],formaTxt:"",statoTxt:"Da verificare",spese:[]},l:1,r:["Controlla il portale bandi della Regione e della Camera di commercio: qui non sono ancora mappati."],st:{k:"aperto"}});
+ custom.forEach((c,i)=>{if(c.regione!=="Tutte"&&c.regione!==p.regione)return;const hit=c.spese.filter(s=>p.spese.includes(s));const ch=c.chiude?new Date(c.chiude):null;
+  res.push({b:{nome:c.nome,ente:"Aggiunto da te",forma:[],formaTxt:"",statoTxt:ch?`Scade il ${fd(ch)}`:"Scadenza non indicata",spese:c.spese,link:c.link},l:hit.length?1:0,r:[c.note||"Nessuna nota",hit.length?`Copre: ${hit.map(s=>SL[s]).join(", ")}.`:"Non copre le spese selezionate."],st:{k:ch&&ch<new Date()?"chiuso":"aperto"},ci:i})});
+ const o={aperto:0,prossimo:1,chiuso:2};return res.sort((a,b)=>b.l-a.l||o[a.st.k]-o[b.st.k]||a.b.nome.localeCompare(b.b.nome));
+}
+function render(){
+ const p=prof(),res=results(p);
+ const R0=$("solofp").checked?res.filter(x=>x.b.forma.includes("fp")):res;
+ const ok=R0.filter(x=>x.l===2&&x.st.k==="aperto").length,next=R0.filter(x=>x.l>0&&x.st.k==="prossimo").length,cond=R0.filter(x=>x.l===1&&x.st.k==="aperto").length;
+ $("n").textContent=ok;$("nl").textContent=(ok===1?"bando compatibile e aperto":"bandi compatibili e aperti")+($("solofp").checked?" a fondo perduto":"");
+ $("ns").textContent=`${cond} con condizioni · ${next} in apertura`;
+ const fpOnly=$("solofp").checked,pool=fpOnly?res.filter(x=>x.b.forma.includes("fp")):res;
+ const show=$("hide0").checked?pool.filter(x=>x.l>0):pool;
+ $("out").innerHTML=show.length?show.map(x=>{const b=x.b,st=x.st.k==="chiuso"?"Chiuso":x.st.k==="prossimo"?"In apertura":"Aperto";
+  return `<article class="card${x.l===0||x.st.k==="chiuso"?" off":""}"><h3>${esc(b.nome)}</h3>
+  <div class="meta"><span class="pill l${x.l}">${LV[x.l]}</span><span class="pill">${st}</span>${b.forma.map(f=>`<span class="pill">${FL[f]}</span>`).join("")}</div>
+  <div class="cov">${esc(b.ente)} · ${esc(b.statoTxt)}</div>${b.formaTxt?`<div class="cov">${esc(b.formaTxt)}</div>`:""}
+  <ul>${x.r.map(t=>`<li>${esc(t)}</li>`).join("")}</ul>
+  <div class="tools" style="margin:10px 0 0">${b.link&&/^https?:\/\//.test(b.link)?`<a href="${esc(b.link)}" target="_blank" rel="noopener">Apri la fonte</a>`:""}${x.ci!==undefined?`<button type="button" class="ghost small" data-del="${x.ci}">Elimina</button>`:""}</div></article>`}).join("")
+  :`<div class="card">Nessun bando compatibile con questi dati. Prova a togliere il filtro o a cambiare le spese selezionate.</div>`;
+ store.set("tb2_draft",p);
+}
+function renderSaved(){const s=store.get("tb2_pratiche",{});$("saved").innerHTML=Object.keys(s).map(n=>`<button type="button" class="ghost small" data-load="${esc(n)}">${esc(n)}</button><button type="button" class="ghost small" data-rm="${esc(n)}" aria-label="Elimina ${esc(n)}">×</button>`).join("")}
+function toast(t){const e=$("toast");e.textContent=t;e.classList.add("on");clearTimeout(toast.t);toast.t=setTimeout(()=>e.classList.remove("on"),1800)}
+
+const chip=(n,v,l,c)=>`<label class="chip"><input type="checkbox" name="${n}" value="${v}"${c?" checked":""}><span>${l}</span></label>`;
+$("regione").innerHTML=REG.map(r=>`<option${r==="Lombardia"?" selected":""}>${r}</option>`).join("");
+$("cbReg").innerHTML="<option>Tutte</option>"+REG.map(r=>`<option>${r}</option>`).join("");
+$("spese").innerHTML=SPESE.map(([g,items])=>`<div class="grp">${g}</div><div class="chips">${items.map(([v,l])=>chip("sp",v,l,v==="mac")).join("")}</div>`).join("");
+$("cbSpese").innerHTML=SPESE.flatMap(g=>g[1]).map(([v,l])=>chip("cb",v,l,false)).join("");
+$("forme").innerHTML=FORME.map(([v,l])=>chip("fo",v,l,false)).join("");
+const d=store.get("tb2_draft",null);if(d&&d.spese)apply(d);
+
+$("f").addEventListener("input",render);$("f").addEventListener("submit",e=>e.preventDefault());$("hide0").addEventListener("change",render);$("solofp").addEventListener("change",render);
+$("save").addEventListener("click",()=>{const p=prof(),n=p.cliente||"Pratica senza nome",s=store.get("tb2_pratiche",{});s[n]=p;toast(store.set("tb2_pratiche",s)?"Pratica salvata":"Salvataggio non disponibile");renderSaved()});
+$("reset").addEventListener("click",()=>{$("f").reset();$("regione").value="Lombardia";document.querySelectorAll("#spese input").forEach(i=>i.checked=i.value==="mac");render()});
+$("saved").addEventListener("click",e=>{const s=store.get("tb2_pratiche",{}),L=e.target.dataset.load,R=e.target.dataset.rm;if(L&&s[L]){apply(s[L]);render();toast("Pratica caricata")}if(R){delete s[R];store.set("tb2_pratiche",s);renderSaved()}});
+$("out").addEventListener("click",e=>{const i=e.target.dataset.del;if(i!==undefined){custom.splice(+i,1);store.set("tb2_custom",custom);render()}});
+$("cbAdd").addEventListener("click",()=>{const nome=$("cbNome").value.trim();if(!nome){toast("Inserisci il nome del bando");return}
+ const m=$("cbChiude").value.trim().match(/^(\d{1,2})\/(\d{1,2})\/(\d{4})$/);
+ custom.push({nome,regione:$("cbReg").value,chiude:m?new Date(+m[3],m[2]-1,+m[1],23,59).toISOString():null,link:$("cbLink").value.trim(),note:$("cbNote").value.trim(),spese:[...document.querySelectorAll("#cbSpese input:checked")].map(i=>i.value)});
+ store.set("tb2_custom",custom);["cbNome","cbLink","cbNote","cbChiude"].forEach(i=>$(i).value="");document.querySelectorAll("#cbSpese input").forEach(i=>i.checked=false);render();toast("Bando aggiunto")});
+$("copy").addEventListener("click",async()=>{const p=prof(),res=results(p).filter(x=>x.l>0&&x.st.k!=="chiuso");
+ const t=[`Pratica: ${p.cliente||"—"}`,`${$("sogg").selectedOptions[0].text} · ${p.regione} · ${eur(p.importo)}`,`Spese: ${p.spese.map(s=>SL[s]).join(", ")||"—"}`,""].concat(res.map(x=>`• ${x.b.nome} – ${LV[x.l]} (${x.b.statoTxt})\n  ${x.r.join("\n  ")}`)).join("\n");
+ try{await navigator.clipboard.writeText(t);toast("Riepilogo copiato")}catch(e){toast("Copia non consentita qui")}});
+renderSaved();
+fetch("bandi.json",{cache:"no-store"}).then(r=>r.json()).then(j=>{B=j.bandi||[];AGG=j.aggiornato||"";
+ const d=pd(AGG);if(d)$("agg").textContent=fd(d);render()}).catch(()=>{$("out").innerHTML='<div class="card">Non riesco a caricare l\'elenco dei bandi. Ricarica la pagina.</div>'});
+}
+</script>
+</body>
+</html>

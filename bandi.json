@@ -1,0 +1,1000 @@
+{
+ "aggiornato": "2026-11-25",
+ "bandi": [
+  {
+   "nome": "Nuova Sabatini",
+   "ente": "MIMIT",
+   "forma": [
+    "tasso"
+   ],
+   "formaTxt": "Contributo in conto interessi su finanziamento bancario o leasing",
+   "chiude": null,
+   "statoTxt": "Sportello continuo (rifinanziata per 2026–2027)",
+   "sogg": [
+    "imp",
+    "start",
+    "pmii"
+   ],
+   "dim": [
+    "micro",
+    "piccola",
+    "media"
+   ],
+   "spese": [
+    "mac",
+    "b40",
+    "hw",
+    "sw"
+   ],
+   "min": 20000,
+   "max": 4000000,
+   "pre": true,
+   "link": "https://www.mimit.gov.it/index.php/it/incentivi/agevolazioni-per-gli-investimenti-delle-pmi-in-beni-strumentali-nuova-sabatini",
+   "note": [
+    "Beni strumentali nuovi, anche 4.0 e green.",
+    "Cumulabile con l'iperammortamento."
+   ],
+   "id": "nuova-sabatini"
+  },
+  {
+   "nome": "Iperammortamento 2026",
+   "ente": "Agevolazione fiscale (L. 199/2025)",
+   "forma": [
+    "fisc"
+   ],
+   "formaTxt": "Maggiorazione del costo ammortizzabile",
+   "chiude": "2028-09-30",
+   "statoTxt": "Investimenti dal 1/01/2026 al 30/09/2028",
+   "sogg": [
+    "imp",
+    "start",
+    "pmii",
+    "gr"
+   ],
+   "dim": null,
+   "spese": [
+    "b40",
+    "sw",
+    "en"
+   ],
+   "need": {
+    "utile": "Serve reddito imponibile: è una deduzione, non un credito d'imposta."
+   },
+   "link": "https://www.assolombarda.it/servizi/fisco/guida-agevolazioni-fiscali/sezioni/transizione-5.0/iperammortamento/lagevolazione",
+   "note": [
+    "Sostituisce i crediti Transizione 4.0 e 5.0.",
+    "Beni materiali e immateriali 4.0 nuovi, interconnessi (Allegati IV e V)."
+   ],
+   "id": "iperammortamento-2026"
+  },
+  {
+   "nome": "Fondo di Garanzia PMI",
+   "ente": "MIMIT – Mediocredito Centrale",
+   "forma": [
+    "gar"
+   ],
+   "formaTxt": "Garanzia pubblica sui finanziamenti bancari",
+   "chiude": null,
+   "statoTxt": "Operativo in continuo",
+   "sogg": [
+    "imp",
+    "start",
+    "pmii",
+    "prof"
+   ],
+   "dim": [
+    "micro",
+    "piccola",
+    "media"
+   ],
+   "spese": [
+    "mac",
+    "b40",
+    "hw",
+    "sw",
+    "cons",
+    "acq",
+    "mur",
+    "en",
+    "circ",
+    "pers",
+    "rs",
+    "form",
+    "intl",
+    "ip"
+   ],
+   "link": "https://www.fondidigaranzia.it",
+   "note": [
+    "Facilita il credito per qualsiasi investimento o liquidità.",
+    "Si attiva tramite la banca."
+   ],
+   "id": "fondo-di-garanzia-pmi"
+  },
+  {
+   "nome": "Conto Termico 3.0",
+   "ente": "GSE",
+   "forma": [
+    "fp"
+   ],
+   "formaTxt": "Incentivo in conto capitale",
+   "chiude": null,
+   "statoTxt": "Sportello aperto dal 13/04/2026",
+   "sogg": null,
+   "dim": null,
+   "spese": [
+    "en"
+   ],
+   "link": "https://www.gse.it",
+   "note": [
+    "Le imprese accedono per edifici del terziario e per le rinnovabili termiche.",
+    "Per alcuni interventi serve la diagnosi energetica."
+   ],
+   "id": "conto-termico-3-0"
+  },
+  {
+   "nome": "Smart&Start Italia",
+   "ente": "MIMIT – Invitalia",
+   "forma": [
+    "tasso"
+   ],
+   "formaTxt": "Finanziamento a tasso zero 80–90%",
+   "chiude": null,
+   "statoTxt": "Aperto (regole aggiornate DM 13/07/2026)",
+   "sogg": [
+    "asp",
+    "start"
+   ],
+   "dim": [
+    "micro",
+    "piccola"
+   ],
+   "anniMax": 5,
+   "spese": [
+    "mac",
+    "hw",
+    "sw",
+    "ip",
+    "cons",
+    "pers",
+    "rs"
+   ],
+   "min": 100000,
+   "max": 1500000,
+   "pre": true,
+   "link": "https://www.mimit.gov.it/it/incentivi/sostegno-alle-startup-innovative-smart-start-italia",
+   "note": [
+    "Solo startup innovative iscritte (o team che le costituiscono).",
+    "Non finanzia opere edili né acquisto immobili."
+   ],
+   "id": "smart-start-italia"
+  },
+  {
+   "nome": "ON – Nuove imprese a tasso zero",
+   "ente": "MIMIT – Invitalia",
+   "forma": [
+    "tasso"
+   ],
+   "formaTxt": "Tasso zero fino al 90%, 10 anni (fondo perduto non più concesso dal 1/07/2026)",
+   "chiude": null,
+   "statoTxt": "Aperto (rifinanziato DM 16/06/2026)",
+   "sogg": [
+    "asp",
+    "imp",
+    "start"
+   ],
+   "dim": [
+    "micro",
+    "piccola"
+   ],
+   "anniMax": 5,
+   "need": {
+    "gf": "Serve la prevalenza di soci donne o under 35."
+   },
+   "spese": [
+    "mac",
+    "hw",
+    "sw",
+    "ip",
+    "cons",
+    "mur",
+    "acq"
+   ],
+   "max": 3000000,
+   "pre": true,
+   "link": "https://www.mimit.gov.it/it/incentivi/misure-per-l-autoimprenditorialita-nuove-imprese-a-tasso-zero",
+   "id": "on-nuove-imprese-a-tasso-zero",
+   "special": "on"
+  },
+  {
+   "nome": "Autoimpiego Centro-Nord",
+   "ente": "Ministero del Lavoro – Invitalia",
+   "forma": [
+    "fp"
+   ],
+   "formaTxt": "Voucher fino a 30.000 € (40.000 con spese innovative o green) o contributo 60–65%",
+   "chiude": null,
+   "statoTxt": "Sportello fino a esaurimento risorse",
+   "sogg": [
+    "asp",
+    "prof",
+    "imp"
+   ],
+   "anniMax": 1,
+   "reg": [
+    "Emilia-Romagna",
+    "Friuli Venezia Giulia",
+    "Lazio",
+    "Liguria",
+    "Lombardia",
+    "Marche",
+    "Piemonte",
+    "Toscana",
+    "Trentino-Alto Adige",
+    "Umbria",
+    "Valle d'Aosta",
+    "Veneto"
+   ],
+   "need": {
+    "u35": "Per under 35 inattivi, inoccupati o disoccupati che avviano una nuova attività."
+   },
+   "spese": [
+    "mac",
+    "hw",
+    "sw",
+    "cons",
+    "b40"
+   ],
+   "pre": true,
+   "link": "https://www.invitalia.it/incentivi-e-strumenti/autoimpiego-centro-nord",
+   "note": [
+    "Il corso dell'Ente Microcredito dà punti di premialità."
+   ],
+   "id": "autoimpiego-centro-nord"
+  },
+  {
+   "nome": "Resto al Sud 2.0",
+   "ente": "Ministero del Lavoro – Invitalia",
+   "forma": [
+    "fp"
+   ],
+   "formaTxt": "Voucher fino a 40.000 € (50.000 con spese innovative o green) o contributo 70–75%",
+   "chiude": null,
+   "statoTxt": "Sportello fino a esaurimento risorse",
+   "sogg": [
+    "asp",
+    "prof",
+    "imp"
+   ],
+   "anniMax": 1,
+   "reg": [
+    "Abruzzo",
+    "Basilicata",
+    "Calabria",
+    "Campania",
+    "Molise",
+    "Puglia",
+    "Sardegna",
+    "Sicilia"
+   ],
+   "need": {
+    "u35": "Per under 35 inattivi, inoccupati o disoccupati che avviano una nuova attività."
+   },
+   "spese": [
+    "mac",
+    "hw",
+    "sw",
+    "cons",
+    "b40"
+   ],
+   "pre": true,
+   "link": "https://www.invitalia.it/incentivi-e-strumenti/resto-al-sud-20",
+   "note": [],
+   "id": "resto-al-sud-2-0"
+  },
+  {
+   "nome": "Brevetti+",
+   "ente": "MIMIT – Invitalia",
+   "forma": [
+    "fp"
+   ],
+   "formaTxt": "Fondo perduto fino a 140.000 €",
+   "apre": "2026-11-25",
+   "chiude": null,
+   "statoTxt": "Sportello dal 25/11/2026 ore 12 – rischio click day",
+   "sogg": [
+    "imp",
+    "start",
+    "pmii"
+   ],
+   "dim": [
+    "micro",
+    "piccola",
+    "media"
+   ],
+   "spese": [
+    "ip",
+    "cons"
+   ],
+   "pre": true,
+   "link": "https://www.invitalia.it",
+   "note": [
+    "Servizi per valorizzare economicamente un brevetto."
+   ],
+   "id": "brevetti"
+  },
+  {
+   "nome": "Marchi+",
+   "ente": "MIMIT – Unioncamere",
+   "forma": [
+    "fp"
+   ],
+   "formaTxt": "Fondo perduto per registrazione marchi UE e internazionali",
+   "apre": "2026-12-03",
+   "chiude": null,
+   "statoTxt": "Sportello dal 3/12/2026 ore 12",
+   "sogg": [
+    "imp",
+    "start",
+    "pmii"
+   ],
+   "dim": [
+    "micro",
+    "piccola",
+    "media"
+   ],
+   "spese": [
+    "ip",
+    "intl"
+   ],
+   "link": "https://www.marchipiu2026.it",
+   "note": [
+    "Dotazione ridotta (2 milioni): presentare il primo giorno."
+   ],
+   "id": "marchi"
+  },
+  {
+   "nome": "Disegni+",
+   "ente": "MIMIT – Unioncamere",
+   "forma": [
+    "fp"
+   ],
+   "formaTxt": "Fondo perduto per valorizzare disegni e modelli",
+   "apre": "2026-12-17",
+   "chiude": null,
+   "statoTxt": "Sportello dal 17/12/2026",
+   "sogg": [
+    "imp",
+    "start",
+    "pmii"
+   ],
+   "dim": [
+    "micro",
+    "piccola",
+    "media"
+   ],
+   "spese": [
+    "ip",
+    "cons"
+   ],
+   "link": "https://www.disegnipiu2026.it",
+   "note": [],
+   "id": "disegni"
+  },
+  {
+   "nome": "SIMEST – Transizione digitale o ecologica",
+   "ente": "SIMEST – Fondo 394/81",
+   "forma": [
+    "tasso",
+    "fp"
+   ],
+   "formaTxt": "Tasso ~0,3% + quota a fondo perduto (10%, fino al 20% per Sud, startup e PMI innovative)",
+   "chiude": "2026-12-31",
+   "statoTxt": "Sportello fino al 31/12/2026",
+   "sogg": [
+    "imp",
+    "start",
+    "pmii",
+    "gr"
+   ],
+   "need": {
+    "export": "Per imprese con attività o progetti sui mercati esteri."
+   },
+   "spese": [
+    "sw",
+    "b40",
+    "en",
+    "cons",
+    "form"
+   ],
+   "max": 5000000,
+   "link": "https://www.simest.it",
+   "note": [
+    "Digitalizzazione e sostenibilità legate alla competitività internazionale."
+   ],
+   "id": "simest-transizione-digitale-o-ecologica"
+  },
+  {
+   "nome": "SIMEST – Energia per la competitività internazionale",
+   "ente": "SIMEST – Fondo 394/81",
+   "forma": [
+    "tasso",
+    "fp"
+   ],
+   "formaTxt": "Finanziamento agevolato + fondo perduto fino al 30% per PMI (max 200.000 €)",
+   "chiude": "2026-12-31",
+   "statoTxt": "Sportello fino al 31/12/2026",
+   "sogg": [
+    "imp",
+    "start",
+    "pmii",
+    "gr"
+   ],
+   "need": {
+    "export": "Per imprese esportatrici."
+   },
+   "spese": [
+    "en",
+    "circ"
+   ],
+   "link": "https://www.simest.it",
+   "note": [
+    "Linea legata ai rincari energetici della crisi del Golfo: verifica i requisiti specifici."
+   ],
+   "id": "simest-energia-per-la-competitivita-internazionale"
+  },
+  {
+   "nome": "SIMEST – Investimenti IA & Quantum Computing",
+   "ente": "SIMEST – Fondo 394/81",
+   "forma": [
+    "tasso",
+    "fp"
+   ],
+   "formaTxt": "Finanziamento agevolato + quota a fondo perduto",
+   "chiude": null,
+   "statoTxt": "Sportello dal 21/09/2026 fino a esaurimento",
+   "sogg": [
+    "imp",
+    "start",
+    "pmii",
+    "gr"
+   ],
+   "need": {
+    "export": "Per imprese a vocazione internazionale."
+   },
+   "spese": [
+    "sw",
+    "hw",
+    "cons",
+    "form"
+   ],
+   "link": "https://www.simest.it",
+   "note": [
+    "Adozione di intelligenza artificiale e quantum computing."
+   ],
+   "id": "simest-investimenti-ia-quantum-computing"
+  },
+  {
+   "nome": "Contratti di sviluppo",
+   "ente": "MIMIT – Invitalia",
+   "forma": [
+    "fp",
+    "tasso"
+   ],
+   "formaTxt": "Fondo perduto + finanziamento agevolato, negoziato",
+   "chiude": null,
+   "statoTxt": "Sportello attivo – verifica risorse",
+   "sogg": [
+    "imp",
+    "pmii",
+    "gr"
+   ],
+   "spese": [
+    "mac",
+    "b40",
+    "hw",
+    "sw",
+    "acq",
+    "mur",
+    "en",
+    "rs",
+    "cons"
+   ],
+   "min": 7500000,
+   "link": "https://www.mimit.gov.it/it/incentivi/contratti-di-sviluppo",
+   "id": "contratti-di-sviluppo",
+   "special": "cds"
+  },
+  {
+   "nome": "Fondo GreenTour",
+   "ente": "Ministero del Turismo – Invitalia",
+   "forma": [
+    "fp",
+    "tasso"
+   ],
+   "formaTxt": "Fondo perduto (base 30%) + finanziamento agevolato",
+   "chiude": "2026-09-30",
+   "statoTxt": "Chiuso il 30/09/2026 – monitorare la prossima edizione",
+   "sogg": [
+    "imp",
+    "gr",
+    "pmii"
+   ],
+   "set": [
+    "tur"
+   ],
+   "spese": [
+    "en",
+    "mur",
+    "sw",
+    "mac"
+   ],
+   "min": 1000000,
+   "max": 15000000,
+   "link": "https://www.invitalia.it/incentivi-e-strumenti/fondo-greentour",
+   "note": [
+    "Riqualificazione energetica e digitale di imprese turistiche, wellness e termali."
+   ],
+   "id": "fondo-greentour"
+  },
+  {
+   "nome": "ZES Unica – credito d'imposta",
+   "ente": "Agevolazione fiscale",
+   "forma": [
+    "fisc"
+   ],
+   "formaTxt": "Credito d'imposta su beni strumentali e immobili strumentali",
+   "chiude": null,
+   "statoTxt": "Da verificare la finestra di comunicazione 2026",
+   "sogg": [
+    "imp",
+    "start",
+    "pmii",
+    "gr"
+   ],
+   "reg": [
+    "Abruzzo",
+    "Basilicata",
+    "Calabria",
+    "Campania",
+    "Molise",
+    "Puglia",
+    "Sardegna",
+    "Sicilia"
+   ],
+   "spese": [
+    "mac",
+    "b40",
+    "hw",
+    "acq",
+    "mur"
+   ],
+   "min": 200000,
+   "link": "https://www.agenziaentrate.gov.it",
+   "note": [
+    "Una delle poche misure che copre anche l'acquisto di immobili strumentali."
+   ],
+   "id": "zes-unica-credito-d-imposta"
+  },
+  {
+   "nome": "Startup innovative early stage",
+   "ente": "Regione Lombardia",
+   "forma": [
+    "fp"
+   ],
+   "formaTxt": "Fondo perduto 80%, fino a 1,5 milioni",
+   "apre": "2026-09-28",
+   "chiude": "2026-11-25",
+   "statoTxt": "Chiude il 25/11/2026 ore 15",
+   "sogg": [
+    "start"
+   ],
+   "reg": [
+    "Lombardia"
+   ],
+   "spese": [
+    "rs",
+    "sw",
+    "cons",
+    "pers",
+    "mac"
+   ],
+   "max": 1500000,
+   "pre": true,
+   "link": "https://www.bandi.regione.lombardia.it",
+   "note": [
+    "Sperimentazione e sviluppo tecnologico, riserva per progetti green."
+   ],
+   "id": "startup-innovative-early-stage"
+  },
+  {
+   "nome": "Nuova impresa 2026",
+   "ente": "Regione Lombardia – Unioncamere",
+   "forma": [
+    "fp"
+   ],
+   "formaTxt": "Fondo perduto fino a 10.000 € (de minimis)",
+   "chiude": "2027-01-29",
+   "statoTxt": "Sportello dal 30/04/2026 al 29/01/2027",
+   "sogg": [
+    "asp",
+    "imp",
+    "prof"
+   ],
+   "dim": [
+    "micro",
+    "piccola",
+    "media"
+   ],
+   "anniMax": 1,
+   "reg": [
+    "Lombardia"
+   ],
+   "spese": [
+    "mac",
+    "hw",
+    "sw",
+    "cons",
+    "mur"
+   ],
+   "link": "https://www.unioncamerelombardia.it/bandi-e-incentivi-alle-imprese/dettaglio-bando/bando-nuova-impresa-2026",
+   "note": [
+    "Per MPMI e autonomi che hanno aperto in Lombardia tra il 1/06/2025 e il 31/12/2026.",
+    "Spese sostenute dopo l'iscrizione e non oltre il 31/12/2026."
+   ],
+   "id": "nuova-impresa-2026",
+   "apre": "2026-04-30"
+  },
+  {
+   "nome": "Investimenti – linea microimprese",
+   "ente": "Regione Lombardia – Unioncamere",
+   "forma": [
+    "fp",
+    "tasso"
+   ],
+   "formaTxt": "Finanziamento + contributo",
+   "chiude": null,
+   "statoTxt": "Sportello dal 5/11/2025 fino a esaurimento – verifica risorse",
+   "sogg": [
+    "imp"
+   ],
+   "dim": [
+    "micro"
+   ],
+   "reg": [
+    "Lombardia"
+   ],
+   "spese": [
+    "mac",
+    "b40",
+    "hw",
+    "sw",
+    "mur",
+    "en"
+   ],
+   "link": "https://www.unioncamerelombardia.it/bandi-e-incentivi-alle-imprese/dettaglio-bando/bando-investimenti-linea-microimprese",
+   "note": [],
+   "id": "investimenti-linea-microimprese"
+  },
+  {
+   "nome": "Basket Bond Lombardia",
+   "ente": "Regione Lombardia",
+   "forma": [
+    "tasso"
+   ],
+   "formaTxt": "Emissione di minibond con garanzia regionale",
+   "chiude": "2027-12-31",
+   "statoTxt": "Domande fino al 31/12/2027",
+   "sogg": [
+    "imp",
+    "pmii"
+   ],
+   "dim": [
+    "micro",
+    "piccola",
+    "media"
+   ],
+   "reg": [
+    "Lombardia"
+   ],
+   "spese": [
+    "mac",
+    "b40",
+    "sw",
+    "rs",
+    "intl",
+    "circ",
+    "en"
+   ],
+   "min": 2000000,
+   "link": "https://www.bandi.regione.lombardia.it",
+   "note": [
+    "Adatto a PMI strutturate con piani di crescita; verifica l'importo minimo dell'emissione."
+   ],
+   "id": "basket-bond-lombardia"
+  },
+  {
+   "nome": "EuReCa Turismo 2026",
+   "ente": "Regione Emilia-Romagna",
+   "forma": [
+    "fp"
+   ],
+   "formaTxt": "Contributi per la qualificazione dell'offerta turistica",
+   "chiude": null,
+   "statoTxt": "Verifica la finestra sul portale regionale",
+   "sogg": [
+    "imp",
+    "pmii"
+   ],
+   "set": [
+    "tur"
+   ],
+   "reg": [
+    "Emilia-Romagna"
+   ],
+   "spese": [
+    "mur",
+    "en",
+    "mac",
+    "hw",
+    "sw"
+   ],
+   "link": "https://imprese.regione.emilia-romagna.it",
+   "note": [
+    "Riqualificazione e arredi di strutture turistiche."
+   ],
+   "id": "eureca-turismo-2026"
+  },
+  {
+   "id": "bando-isi-inail",
+   "nome": "Bando ISI INAIL",
+   "ente": "INAIL",
+   "forma": [
+    "fp"
+   ],
+   "formaTxt": "Fondo perduto 65%, fino a 130.000 €",
+   "chiude": "2026-05-28",
+   "statoTxt": "Edizione 2025 chiusa (domande 13/04–28/05/2026) – attesa la nuova edizione",
+   "sogg": [
+    "imp",
+    "start",
+    "pmii",
+    "gr"
+   ],
+   "spese": [
+    "sic",
+    "mac",
+    "mur"
+   ],
+   "link": "https://www.inail.it",
+   "note": [
+    "Progetti per salute e sicurezza sul lavoro, rimozione amianto, macchine agricole.",
+    "Aperto anche alle imprese individuali iscritte in Camera di commercio; assegnazione con click day."
+   ]
+  },
+  {
+   "id": "voucher-3i",
+   "nome": "Voucher 3I – Investire in innovazione",
+   "ente": "MIMIT – Invitalia",
+   "forma": [
+    "fp"
+   ],
+   "formaTxt": "Voucher da 1.000, 3.000 o 4.000 € + IVA",
+   "chiude": null,
+   "statoTxt": "Sportello a esaurimento risorse – verifica disponibilità",
+   "sogg": [
+    "start",
+    "imp"
+   ],
+   "dim": [
+    "micro",
+    "piccola"
+   ],
+   "spese": [
+    "ip",
+    "cons"
+   ],
+   "link": "https://www.mimit.gov.it/it/incentivi/voucher-3i-investire-in-innovazione",
+   "note": [
+    "Per startup innovative e microimprese: consulenza per brevettare un'invenzione.",
+    "Non copre tasse e diritti di deposito."
+   ]
+  },
+  {
+   "id": "voucher-doppia-transizione-2026",
+   "nome": "Voucher Doppia Transizione 2026",
+   "ente": "Camere di commercio (PID)",
+   "forma": [
+    "fp"
+   ],
+   "formaTxt": "Fondo perduto fino al 70%, di norma fino a 10.000 € (dipende dalla Camera)",
+   "chiude": null,
+   "statoTxt": "Finestre decise da ogni Camera di commercio – verifica la tua",
+   "sogg": [
+    "imp",
+    "start",
+    "pmii"
+   ],
+   "dim": [
+    "micro",
+    "piccola",
+    "media"
+   ],
+   "spese": [
+    "sw",
+    "b40",
+    "cons",
+    "form",
+    "en"
+   ],
+   "link": "https://www.unioncamere.gov.it",
+   "note": [
+    "Tecnologie digitali avanzate, AI, sostenibilità, consulenza e formazione.",
+    "Serve l'autovalutazione Selfi 4.0; non tutte le Camere hanno aderito."
+   ]
+  },
+  {
+   "id": "competenze-innovazione-2",
+   "nome": "Competenze&Innovazione – 2ª edizione",
+   "ente": "Regione Lombardia – Unioncamere",
+   "forma": [
+    "fp"
+   ],
+   "formaTxt": "Fondo perduto 70%, fino a 50.000 € (spesa minima 10.000 €)",
+   "chiude": "2026-12-22",
+   "statoTxt": "Sportello fino al 22/12/2026 salvo esaurimento – verifica",
+   "sogg": [
+    "imp",
+    "start",
+    "pmii"
+   ],
+   "dim": [
+    "micro",
+    "piccola",
+    "media"
+   ],
+   "reg": [
+    "Lombardia"
+   ],
+   "spese": [
+    "form",
+    "cons"
+   ],
+   "min": 10000,
+   "pre": true,
+   "link": "https://www.bandi.regione.lombardia.it",
+   "note": [
+    "Formazione e sviluppo competenze per la transizione digitale ed ecologica."
+   ]
+  },
+  {
+   "id": "talenti-lombardia",
+   "nome": "Talenti – Trasferimento delle conoscenze",
+   "ente": "Regione Lombardia",
+   "forma": [
+    "fp"
+   ],
+   "formaTxt": "Fondo perduto 70% (tempo indeterminato) o 60% (tempo determinato)",
+   "chiude": null,
+   "statoTxt": "Domande dal 15/07/2026 – verifica risorse",
+   "sogg": [
+    "imp",
+    "start",
+    "pmii"
+   ],
+   "dim": [
+    "micro",
+    "piccola",
+    "media"
+   ],
+   "reg": [
+    "Lombardia"
+   ],
+   "spese": [
+    "pers",
+    "rs"
+   ],
+   "pre": true,
+   "link": "https://www.regione.lombardia.it/attivita-produttive-imprese/sostegno-alle-imprese/talenti---trasferimento-delle-conoscenze",
+   "note": [
+    "Assunzione di dottori di ricerca per progetti di innovazione coerenti con la S3 lombarda."
+   ]
+  },
+  {
+   "id": "collabora-innova",
+   "nome": "Collabora & Innova – secondo sportello",
+   "ente": "Regione Lombardia",
+   "forma": [
+    "fp"
+   ],
+   "formaTxt": "Contributo a fondo perduto per progetti di R&S",
+   "chiude": null,
+   "statoTxt": "Da verificare finestra e requisiti",
+   "sogg": [
+    "imp",
+    "start",
+    "pmii",
+    "gr"
+   ],
+   "reg": [
+    "Lombardia"
+   ],
+   "spese": [
+    "rs",
+    "pers",
+    "cons"
+   ],
+   "pre": true,
+   "link": "https://www.bandi.regione.lombardia.it",
+   "note": [
+    "Progetti di ricerca e sviluppo in collaborazione."
+   ]
+  },
+  {
+   "id": "si40-2026",
+   "nome": "SI4.0 2026",
+   "ente": "Camere di commercio di Bergamo, Brescia e Milano Monza Brianza Lodi",
+   "forma": [
+    "fp"
+   ],
+   "formaTxt": "Fondo perduto 50%, fino a 30.000 € (investimento minimo 25.000 €)",
+   "chiude": null,
+   "statoTxt": "Domande dal 1/09/2026 – verifica risorse",
+   "sogg": [
+    "imp",
+    "start",
+    "pmii"
+   ],
+   "dim": [
+    "micro",
+    "piccola",
+    "media"
+   ],
+   "reg": [
+    "Lombardia"
+   ],
+   "spese": [
+    "sw",
+    "b40",
+    "cons"
+   ],
+   "min": 25000,
+   "pre": true,
+   "link": "https://www.bs.camcom.it",
+   "note": [
+    "Sviluppo, prototipazione e commercializzazione di soluzioni innovative 4.0.",
+    "Solo sedi nelle province di Bergamo, Brescia, Milano, Monza Brianza e Lodi."
+   ]
+  },
+  {
+   "id": "accordi-innovazione-automotive",
+   "nome": "Accordi per l'innovazione – automotive",
+   "ente": "MIMIT",
+   "forma": [
+    "fp"
+   ],
+   "formaTxt": "Fondo perduto 45% piccole, 35% medie, 25% grandi imprese",
+   "apre": "2026-11-25",
+   "chiude": null,
+   "statoTxt": "Sportello dal 25/11/2026 ore 10 fino a esaurimento",
+   "sogg": [
+    "imp",
+    "pmii",
+    "gr"
+   ],
+   "set": [
+    "manif"
+   ],
+   "spese": [
+    "rs",
+    "pers",
+    "mac",
+    "cons"
+   ],
+   "pre": true,
+   "link": "https://www.mimit.gov.it",
+   "note": [
+    "Progetti di ricerca e sviluppo nella filiera automotive: verifica la soglia minima di progetto."
+   ]
+  }
+ ]
+}
