@@ -13,7 +13,7 @@
    PICTURE: il modulo stesso, con l'esito grande accanto
    COLOUR and TYPE: scala di grigi del sito (oklch 18–97%), CTA bianca; Space Grotesk 600 + Manrope
    LAYOUT: header del sito, hero con etichette, modulo a sinistra ed esito a destra, footer del sito */
-:root{color-scheme:dark;--bg:oklch(18% 0 0);--sec:oklch(20.5% 0 0);--card:oklch(23.5% 0 0);--acc:oklch(29% 0 0);--line:oklch(38% 0 0);--mute:oklch(77% 0 0);--ink:oklch(97% 0 0);--white:oklch(100% 0 0);--dark:oklch(16% 0 0);--tagline:oklab(0.92 0 0 / .3)}
+:root{color-scheme:dark;--bg:oklch(18% 0 0);--sec:oklch(20.5% 0 0);--card:oklch(23.5% 0 0);--acc:oklch(29% 0 0);--line:oklch(38% 0 0);--mute:oklch(77% 0 0);--ink:oklch(97% 0 0);--white:oklch(100% 0 0);--dark:oklch(16% 0 0);--tagline:oklab(0.92 0 0 / .3);--coral:#D9473B}
 *{box-sizing:border-box;min-width:0}
 body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.6 Manrope,system-ui,sans-serif;overflow-x:clip}
 h1,h2,h3,.big,.brand{font-family:"Space Grotesk",system-ui,sans-serif;font-weight:600}
@@ -34,18 +34,18 @@ button.small{min-height:36px;padding:4px 12px;font-size:13px}
 .tags{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:20px}
 .tag{font-size:12px;font-weight:600;text-transform:uppercase;padding:6px 12px;background:var(--acc);border:1px solid var(--tagline)}
 h1{font-size:clamp(34px,5.4vw,60px);line-height:1.1;margin:0;max-width:18ch;text-wrap:balance}
-h1 em{font-style:normal;color:var(--white)}
+h1 em{font-style:normal;color:var(--white)}.dot{color:var(--coral)}
 .sub{color:var(--mute);margin:18px 0 0;max-width:62ch;font-size:17px}
 .band{background:var(--sec);border-top:1px solid var(--line);padding:clamp(24px,4vw,48px) 0}
 h2{font-size:22px;margin:0 0 4px}
-.eyebrow{font-size:12px;font-weight:600;text-transform:uppercase;color:var(--mute);margin:0 0 6px}
+.eyebrow{font-size:12px;font-weight:600;text-transform:uppercase;color:var(--mute);margin:0 0 6px}.eyebrow::after{content:".";color:var(--coral);font-size:16px;line-height:0}
 .grid{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.15fr);gap:28px;align-items:start}
 @media(max-width:900px){.grid{grid-template-columns:minmax(0,1fr)}}
 .box{border:1px solid var(--line);background:var(--bg);padding:22px;margin-bottom:16px}
 .hint{font-size:14px;color:var(--mute);margin:0 0 8px}
 label{display:block;font-size:14px;color:var(--mute);margin:12px 0 4px}
 select,input[type=text],input[type=number],textarea{width:100%;font:16px Manrope,sans-serif;padding:10px 12px;min-height:44px;border:1px solid var(--line);border-radius:2px;background:var(--card);color:var(--ink)}
-:focus-visible{outline:2px solid var(--white);outline-offset:2px}
+:focus-visible{outline:2px solid var(--coral);outline-offset:2px}
 .row{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:12px}
 @media(max-width:480px){.row{grid-template-columns:minmax(0,1fr)}}
 .grp{font-weight:600;font-size:12px;text-transform:uppercase;margin:16px 0 8px;color:var(--mute)}
@@ -54,18 +54,18 @@ select,input[type=text],input[type=number],textarea{width:100%;font:16px Manrope
 .chip input{position:absolute;opacity:0;inset:0}
 .chip span{display:inline-flex;align-items:center;min-height:40px;padding:6px 14px;border:1px solid var(--line);border-radius:2px;font-size:14px;cursor:pointer;background:var(--card);color:var(--ink)}
 .chip input:checked+span{background:var(--white);color:var(--dark);border-color:var(--white);font-weight:600}
-.chip input:focus-visible+span{outline:2px solid var(--white);outline-offset:2px}
+.chip input:focus-visible+span{outline:2px solid var(--coral);outline-offset:2px}
 .sticky{position:sticky;top:16px}
 @media(max-width:900px){.sticky{position:static}}
 .hero{background:var(--card);border:1px solid var(--line);padding:20px 22px;display:grid;grid-template-columns:auto minmax(0,1fr);gap:4px 18px;align-items:center}
 .big{font-size:clamp(52px,7vw,76px);line-height:1;grid-row:span 2;color:var(--white)}
-.hero .big{font-size:clamp(52px,7vw,76px);color:var(--white)}.hero b{font-size:18px;font-family:"Space Grotesk",sans-serif;font-weight:600}.hero span{font-size:14px;color:var(--mute)}
+.hero .big{font-size:clamp(52px,7vw,76px);color:var(--coral)}.hero b{font-size:18px;font-family:"Space Grotesk",sans-serif;font-weight:600}.hero span{font-size:14px;color:var(--mute)}
 .tools{display:flex;flex-wrap:wrap;gap:8px;margin:14px 0}
 .card{border:1px solid var(--line);padding:18px;margin-top:12px;background:var(--card)}
 .card h3{margin:0;font-size:19px;line-height:1.25}
 .meta{display:flex;flex-wrap:wrap;gap:6px;margin:10px 0}
 .pill{font-size:11px;font-weight:600;text-transform:uppercase;padding:5px 10px;border:1px solid var(--tagline);background:var(--acc);white-space:nowrap}
-.l2{background:var(--white);color:var(--dark);border-color:var(--white)}
+.l2{background:var(--white);color:var(--dark);border-color:var(--white)}.l2::before{content:"";display:inline-block;width:7px;height:7px;border-radius:50%;background:var(--coral);margin-right:6px;vertical-align:1px}
 .l1{background:transparent;color:var(--white);border-color:var(--white)}
 .l0{background:transparent;color:var(--mute);border-color:var(--line)}
 .card.off{opacity:.6}
@@ -75,7 +75,7 @@ details{margin-top:16px}
 summary{cursor:pointer;font-weight:600;min-height:44px;display:flex;align-items:center}
 .saved{display:flex;flex-wrap:wrap;gap:8px}
 .note{font-size:13px;color:var(--mute);margin-top:18px}
-.cta{border:1px solid var(--line);background:var(--bg);padding:clamp(22px,4vw,40px);display:flex;flex-wrap:wrap;gap:16px 32px;align-items:center;justify-content:space-between;margin-top:clamp(28px,4vw,48px)}
+.cta{border:1px solid var(--line);border-left:3px solid var(--coral);background:var(--bg);padding:clamp(22px,4vw,40px);display:flex;flex-wrap:wrap;gap:16px 32px;align-items:center;justify-content:space-between;margin-top:clamp(28px,4vw,48px)}
 .cta h2{font-size:clamp(24px,3vw,32px);line-height:1.15;max-width:22ch;margin:0}
 .cta p{color:var(--mute);margin:8px 0 0;max-width:52ch}
 footer{border-top:1px solid var(--line);padding:24px 0;font-size:14px;color:var(--mute)}
@@ -93,7 +93,7 @@ footer a{text-decoration:none}footer a:hover{color:var(--ink)}
 </header>
 <section class="hero-s">
   <div class="tags"><span class="tag">Bandi</span><span class="tag">Finanza agevolata</span><span class="tag">Startup</span><span class="tag">PMI</span></div>
-  <h1>Quale bando fa per te? <em>Scoprilo in due minuti.</em></h1>
+  <h1>Quale bando fa per te? <em>Scoprilo in due minuti</em><span class="dot">.</span></h1>
   <p class="sub">Raccontami chi sei e su cosa vuoi investire: ti mostro subito le misure compatibili, a quali condizioni e con quali scadenze.</p>
 </section>
 </div>
