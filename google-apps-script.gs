@@ -5,7 +5,7 @@
  *      Esegui come: Me · Chi ha accesso: Chiunque
  */
 
-const EMAIL_AVVISO = 'ileniaenna@gmail.com';   // dove ricevi l'avviso di ogni nuova richiesta
+const EMAIL_AVVISO = 'ileniaaenna@gmail.com';   // dove ricevi l'avviso di ogni nuova richiesta
 const NOME_FOGLIO = 'Richieste';
 
 const COLONNE = ['Data', 'Nome', 'Email', 'Telefono', 'Azienda', 'Messaggio',
