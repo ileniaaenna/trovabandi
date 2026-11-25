@@ -63,6 +63,13 @@ select,input[type=text],input[type=number],textarea{width:100%;font:16px Manrope
 .tools{display:flex;flex-wrap:wrap;gap:8px;margin:14px 0}
 .card{border:1px solid var(--line);padding:18px;margin-top:12px;background:var(--card)}
 .card h3{margin:0;font-size:19px;line-height:1.25}
+.chead{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:12px 18px;align-items:start}
+.amt{text-align:right;border-left:1px solid var(--line);padding-left:16px;min-width:150px;display:flex;flex-direction:column;gap:2px}
+.amt small{font-size:11px;font-weight:600;text-transform:uppercase;color:var(--mute)}
+.amt b{font:600 24px/1.15 "Space Grotesk",sans-serif;color:var(--white);white-space:nowrap}
+.amt span{font-size:13px;color:var(--mute);white-space:nowrap}
+@media(max-width:520px){.chead{grid-template-columns:minmax(0,1fr)}.amt{text-align:left;border-left:0;border-top:1px solid var(--line);padding:10px 0 0}}
+.na{grid-column:1/-1;margin:10px 0 0;padding-top:12px;border-top:1px solid var(--line);font-size:15px}.na b{color:var(--coral);font-family:"Space Grotesk",sans-serif;font-size:18px}.na span{display:block;font-size:13px;color:var(--mute)}
 .meta{display:flex;flex-wrap:wrap;gap:6px;margin:10px 0}
 .pill{font-size:11px;font-weight:600;text-transform:uppercase;padding:5px 10px;border:1px solid var(--tagline);background:var(--acc);white-space:nowrap}
 .l2{background:var(--white);color:var(--dark);border-color:var(--white)}.l2::before{content:"";display:inline-block;width:7px;height:7px;border-radius:50%;background:var(--coral);margin-right:6px;vertical-align:1px}
@@ -121,9 +128,10 @@ footer a{text-decoration:none}footer a:hover{color:var(--ink)}
         <select id="dim"><option value="micro">Micro (&lt;10 addetti)</option><option value="piccola" selected>Piccola (&lt;50)</option><option value="media">Media (&lt;250)</option><option value="grande">Grande</option></select></div>
     </div>
     <div class="row">
-      <div><label for="anni">Anni dalla costituzione</label><input type="number" id="anni" min="0" max="150" value="3"></div>
+      <div><label for="regLeg">Regione della sede legale</label><select id="regLeg"></select></div>
       <div><label for="regione">Regione della sede operativa</label><select id="regione"></select></div>
     </div>
+    <label for="anni">Anni dalla costituzione</label><input type="number" id="anni" min="0" max="150" value="3">
     <label for="settore">Settore</label>
     <select id="settore">
       <option value="manif">Manifattura / artigianato</option>
@@ -165,7 +173,7 @@ footer a{text-decoration:none}footer a:hover{color:var(--ink)}
 </form>
 
 <section class="sticky" aria-live="polite">
-  <div class="hero"><span class="big" id="n">0</span><b id="nl">bandi compatibili e aperti</b><span id="ns"></span></div>
+  <div class="hero"><span class="big" id="n">0</span><b id="nl">bandi compatibili e aperti</b><span id="ns"></span><p class="na" id="na" hidden></p></div>
   <div class="tools">
     <button type="button" id="save">Salva pratica</button>
     <button type="button" class="ghost" id="copy">Copia riepilogo</button>
@@ -254,9 +262,9 @@ const SOGG={asp:"aspiranti imprenditori",prof:"professionisti",imp:"PMI",start:"
 const LV=["Non compatibile","Possibile con condizioni","Compatibile"];
 
 function prof(){const v=id=>$(id).value,c=id=>$(id).checked;
- return{cliente:v("cliente").trim(),sogg:v("sogg"),dim:v("dim"),anni:+v("anni")||0,regione:v("regione"),settore:v("settore"),gf:c("gf"),u35:c("u35"),export:c("export"),utile:c("utile"),
+ return{cliente:v("cliente").trim(),sogg:v("sogg"),dim:v("dim"),anni:+v("anni")||0,regione:v("regione"),regLeg:v("regLeg"),settore:v("settore"),gf:c("gf"),u35:c("u35"),export:c("export"),utile:c("utile"),
  entro:+v("entro"),importo:+v("importo")||0,avviato:c("avviato"),spese:[...document.querySelectorAll("#spese input:checked")].map(i=>i.value),forme:[...document.querySelectorAll("#forme input:checked")].map(i=>i.value)}}
-function apply(p){["cliente","sogg","dim","anni","regione","settore","entro","importo"].forEach(k=>$(k).value=p[k]);["gf","u35","export","utile","avviato"].forEach(k=>$(k).checked=!!p[k]);
+function apply(p){["cliente","sogg","dim","anni","regione","settore","entro","importo"].forEach(k=>$(k).value=p[k]);$("regLeg").value=p.regLeg||p.regione;["gf","u35","export","utile","avviato"].forEach(k=>$(k).checked=!!p[k]);
  document.querySelectorAll("#spese input").forEach(i=>i.checked=p.spese.includes(i.value));document.querySelectorAll("#forme input").forEach(i=>i.checked=(p.forme||[]).includes(i.value))}
 
 function stato(b,p){const now=new Date(),ap=pd(b.apre),ch=pd(b.chiude),lim=new Date();lim.setMonth(lim.getMonth()+p.entro);
@@ -266,7 +274,10 @@ function check(b,p){const r=[];let l=2;const no=t=>{l=0;r.push(t)},cond=t=>{l=Ma
  if(b.sogg&&!b.sogg.includes(p.sogg))no(`Riservato a: ${b.sogg.map(s=>SOGG[s]).join(", ")}.`);
  if(b.dim&&!b.dim.includes(p.dim)&&p.sogg!=="asp")no(`Solo imprese ${b.dim.join(", ")}.`);
  if(b.anniMax!=null&&p.anni>b.anniMax)no(`Solo soggetti costituiti da non più di ${b.anniMax} ${b.anniMax===1?"anno":"anni"}.`);
- if(b.reg&&!b.reg.includes(p.regione))no(`Solo in: ${b.reg.length>4?b.reg.length+" regioni ("+(b.reg.includes("Sicilia")?"Mezzogiorno":"Centro-Nord")+")":b.reg.join(", ")}.`);
+ if(b.reg){const dove=b.reg.length>4?b.reg.length+" regioni ("+(b.reg.includes("Sicilia")?"Mezzogiorno":"Centro-Nord")+")":b.reg.join(", "),op=b.reg.includes(p.regione),lg=b.reg.includes(p.regLeg),need=b.regSede||"operativa";
+  if(need==="entrambe"&&!(op&&lg)){(op||lg)?cond(`Servono sia la sede legale sia la sede operativa in: ${dove}.`):no(`Solo con sede legale e operativa in: ${dove}.`)}
+  else if(need==="legale"&&!lg){op?cond(`Serve la sede legale in: ${dove}.`):no(`Solo con sede legale in: ${dove}.`)}
+  else if(need==="operativa"&&!op){lg?cond(`Serve una sede operativa in: ${dove}. Valuta l'apertura di un'unità locale.`):no(`Solo con sede operativa in: ${dove}.`)}}
  if(b.set&&!b.set.includes(p.settore))no("Riservato al settore turistico.");
  for(const k in b.need||{})if(!p[k])no(b.need[k]);
  const hit=b.spese.filter(s=>p.spese.includes(s));
@@ -281,9 +292,13 @@ function check(b,p){const r=[];let l=2;const no=t=>{l=0;r.push(t)},cond=t=>{l=Ma
  if(st.urg&&st.ch)r.push(`Scade il ${fd(st.ch)}: urgente.`);
  return{b,l,r:r.concat(b.note||[]),st}}
 
+function amt(b,p){if(!b.perc&&!b.agevMax)return null;
+ let max=b.agevMax||(b.max&&b.perc?b.max*b.perc/100:null),min=b.agevMin||(b.min&&b.perc?b.min*b.perc/100:null),est=null;
+ if(b.perc&&p.importo>0&&(!b.min||p.importo>=b.min)){est=Math.min(p.importo,b.max||Infinity)*b.perc/100;if(max)est=Math.min(est,max)}
+ return{min,max,est,perc:b.perc}}
 let custom=store.get("tb2_custom",[]);
 function results(p){
- let res=B.filter(b=>!b.reg||b.reg.includes(p.regione)||b.reg.length>1).map(b=>check(b,p));
+ let res=B.filter(b=>!b.reg||b.reg.includes(p.regione)||b.reg.includes(p.regLeg)||b.reg.length>1).map(b=>check(b,p));
  if(!["Lombardia","Emilia-Romagna"].includes(p.regione))res.push({b:{nome:`Bandi regionali e camerali – ${p.regione}`,ente:"Regione e Camera di commercio",forma:[],formaTxt:"",statoTxt:"Da verificare",spese:[]},l:1,r:["Controlla il portale bandi della Regione e della Camera di commercio: qui non sono ancora mappati."],st:{k:"aperto"}});
  custom.forEach((c,i)=>{if(c.regione!=="Tutte"&&c.regione!==p.regione)return;const hit=c.spese.filter(s=>p.spese.includes(s));const ch=c.chiude?new Date(c.chiude):null;
   res.push({b:{nome:c.nome,ente:"Aggiunto da te",forma:[],formaTxt:"",statoTxt:ch?`Scade il ${fd(ch)}`:"Scadenza non indicata",spese:c.spese,link:c.link},l:hit.length?1:0,r:[c.note||"Nessuna nota",hit.length?`Copre: ${hit.map(s=>SL[s]).join(", ")}.`:"Non copre le spese selezionate."],st:{k:ch&&ch<new Date()?"chiuso":"aperto"},ci:i})});
@@ -295,11 +310,15 @@ function render(){
  const ok=R0.filter(x=>x.l===2&&x.st.k==="aperto").length,next=R0.filter(x=>x.l>0&&x.st.k==="prossimo").length,cond=R0.filter(x=>x.l===1&&x.st.k==="aperto").length;
  $("n").textContent=ok;$("nl").textContent=(ok===1?"bando compatibile e aperto":"bandi compatibili e aperti")+($("solofp").checked?" a fondo perduto":"");
  $("ns").textContent=`${cond} con condizioni · ${next} in apertura`;
+ const ests=R0.filter(x=>x.l===2&&x.st.k==="aperto").map(x=>amt(x.b,p)).filter(a=>a&&a.est).map(a=>a.est);
+ $("na").innerHTML=ests.length?`Puoi richiedere <b>${ests.length>1?"da "+eur(Math.min(...ests))+" a ":"fino a "}${eur(Math.max(...ests))}</b> <span>secondo il bando scelto, stima sul tuo investimento</span>`:"";$("na").hidden=!ests.length;
  const fpOnly=$("solofp").checked,pool=fpOnly?res.filter(x=>x.b.forma.includes("fp")):res;
  const show=$("hide0").checked?pool.filter(x=>x.l>0):pool;
  $("out").innerHTML=show.length?show.map(x=>{const b=x.b,st=x.st.k==="chiuso"?(b.ciclico?"Ciclico – prossima edizione":"Chiuso"):x.st.k==="prossimo"?"In apertura":"Aperto";
-  return `<article class="card${x.l===0||x.st.k==="chiuso"?" off":""}"><h3>${esc(b.nome)}</h3>
-  <div class="meta"><span class="pill l${x.l}">${LV[x.l]}</span><span class="pill">${st}</span>${b.forma.map(f=>`<span class="pill">${FL[f]}</span>`).join("")}</div>
+  const a=amt(b,p);
+  const box=a?`<div class="amt"><small>Puoi richiedere${b.forma.includes("fp")&&!b.forma.includes("tasso")?" a fondo perduto":b.forma.includes("tasso")&&!b.forma.includes("fp")?" come finanziamento":""}</small>${a.est?`<b>≈ ${eur(a.est)}</b>`:""}${a.min||a.max?`<span>${a.min?"min "+eur(a.min):""}${a.min&&a.max?" · ":""}${a.max?"max "+eur(a.max):""}</span>`:""}${a.perc?`<span>copertura fino al ${a.perc}%</span>`:""}</div>`:"";
+  return `<article class="card${x.l===0||x.st.k==="chiuso"?" off":""}"><div class="chead"><div><h3>${esc(b.nome)}</h3>
+  <div class="meta"><span class="pill l${x.l}">${LV[x.l]}</span><span class="pill">${st}</span>${b.forma.map(f=>`<span class="pill">${FL[f]}</span>`).join("")}</div></div>${box}</div>
   <div class="cov">${esc(b.ente)} · ${esc(b.statoTxt)}</div>${b.formaTxt?`<div class="cov">${esc(b.formaTxt)}</div>`:""}
   <ul>${x.r.map(t=>`<li>${esc(t)}</li>`).join("")}</ul>
   <div class="tools" style="margin:10px 0 0">${b.link&&/^https?:\/\//.test(b.link)?`<a href="${esc(b.link)}" target="_blank" rel="noopener">Apri la fonte</a>`:""}${x.ci!==undefined?`<button type="button" class="ghost small" data-del="${x.ci}">Elimina</button>`:""}</div></article>`}).join("")
@@ -310,7 +329,7 @@ function renderSaved(){const s=store.get("tb2_pratiche",{});$("saved").innerHTML
 function toast(t){const e=$("toast");e.textContent=t;e.classList.add("on");clearTimeout(toast.t);toast.t=setTimeout(()=>e.classList.remove("on"),1800)}
 
 const chip=(n,v,l,c)=>`<label class="chip"><input type="checkbox" name="${n}" value="${v}"${c?" checked":""}><span>${l}</span></label>`;
-$("regione").innerHTML=REG.map(r=>`<option${r==="Lombardia"?" selected":""}>${r}</option>`).join("");
+$("regione").innerHTML=REG.map(r=>`<option${r==="Lombardia"?" selected":""}>${r}</option>`).join("");$("regLeg").innerHTML=$("regione").innerHTML;
 $("cbReg").innerHTML="<option>Tutte</option>"+REG.map(r=>`<option>${r}</option>`).join("");
 $("spese").innerHTML=SPESE.map(([g,items])=>`<div class="grp">${g}</div><div class="chips">${items.map(([v,l])=>chip("sp",v,l,v==="mac")).join("")}</div>`).join("");
 $("cbSpese").innerHTML=SPESE.flatMap(g=>g[1]).map(([v,l])=>chip("cb",v,l,false)).join("");
@@ -319,7 +338,7 @@ const d=store.get("tb2_draft",null);if(d&&d.spese)apply(d);
 
 $("f").addEventListener("input",render);$("f").addEventListener("submit",e=>e.preventDefault());$("hide0").addEventListener("change",render);$("solofp").addEventListener("change",render);
 $("save").addEventListener("click",()=>{const p=prof(),n=p.cliente||"Pratica senza nome",s=store.get("tb2_pratiche",{});s[n]=p;toast(store.set("tb2_pratiche",s)?"Pratica salvata":"Salvataggio non disponibile");renderSaved()});
-$("reset").addEventListener("click",()=>{$("f").reset();$("regione").value="Lombardia";document.querySelectorAll("#spese input").forEach(i=>i.checked=i.value==="mac");render()});
+$("reset").addEventListener("click",()=>{$("f").reset();$("regione").value="Lombardia";$("regLeg").value="Lombardia";document.querySelectorAll("#spese input").forEach(i=>i.checked=i.value==="mac");render()});
 $("saved").addEventListener("click",e=>{const s=store.get("tb2_pratiche",{}),L=e.target.dataset.load,R=e.target.dataset.rm;if(L&&s[L]){apply(s[L]);render();toast("Pratica caricata")}if(R){delete s[R];store.set("tb2_pratiche",s);renderSaved()}});
 $("out").addEventListener("click",e=>{const i=e.target.dataset.del;if(i!==undefined){custom.splice(+i,1);store.set("tb2_custom",custom);render()}});
 $("cbAdd").addEventListener("click",()=>{const nome=$("cbNome").value.trim();if(!nome){toast("Inserisci il nome del bando");return}
@@ -327,7 +346,7 @@ $("cbAdd").addEventListener("click",()=>{const nome=$("cbNome").value.trim();if(
  custom.push({nome,regione:$("cbReg").value,chiude:m?new Date(+m[3],m[2]-1,+m[1],23,59).toISOString():null,link:$("cbLink").value.trim(),note:$("cbNote").value.trim(),spese:[...document.querySelectorAll("#cbSpese input:checked")].map(i=>i.value)});
  store.set("tb2_custom",custom);["cbNome","cbLink","cbNote","cbChiude"].forEach(i=>$(i).value="");document.querySelectorAll("#cbSpese input").forEach(i=>i.checked=false);render();toast("Bando aggiunto")});
 $("copy").addEventListener("click",async()=>{const p=prof(),res=results(p).filter(x=>x.l>0&&x.st.k!=="chiuso");
- const t=[`Pratica: ${p.cliente||"—"}`,`${$("sogg").selectedOptions[0].text} · ${p.regione} · ${eur(p.importo)}`,`Spese: ${p.spese.map(s=>SL[s]).join(", ")||"—"}`,""].concat(res.map(x=>`• ${x.b.nome} – ${LV[x.l]} (${x.b.statoTxt})\n  ${x.r.join("\n  ")}`)).join("\n");
+ const t=[`Pratica: ${p.cliente||"—"}`,`${$("sogg").selectedOptions[0].text} · sede operativa ${p.regione}, legale ${p.regLeg} · ${eur(p.importo)}`,`Spese: ${p.spese.map(s=>SL[s]).join(", ")||"—"}`,""].concat(res.map(x=>{const a=amt(x.b,p);return `• ${x.b.nome} – ${LV[x.l]} (${x.b.statoTxt})${a&&a.est?` – richiedibile ≈ ${eur(a.est)}`:""}\n  ${x.r.join("\n  ")}`})).join("\n");
  try{await navigator.clipboard.writeText(t);toast("Riepilogo copiato")}catch(e){toast("Copia non consentita qui")}});
 
 const ENDPOINT="https://script.google.com/macros/s/AKfycbznrq5EVxfvzK5a4kvxk28goygD8Bvt6xe9pria0CLgfkgkJB4DX_-bO9km5taheAlu/exec";
@@ -341,7 +360,7 @@ $("lead").addEventListener("submit",async e=>{e.preventDefault();const out=$("lE
  if(!ENDPOINT){out.textContent="Il modulo non è ancora attivo: scrivimi a consulting@ileniaenna.com.";return}
  const p=prof(),res=results(p),nm=l=>res.filter(x=>x.l===l&&x.st.k!=="chiuso").map(x=>x.b.nome).join("; ");
  const d={nome,email,telefono:$("lTel").value.trim(),azienda:$("lAz").value.trim(),messaggio:$("lMsg").value.trim(),sito:$("lSito").value,
-  soggetto:$("sogg").selectedOptions[0].text,dimensione:$("dim").selectedOptions[0].text,anni:p.anni,regione:p.regione,settore:$("settore").selectedOptions[0].text,
+  soggetto:$("sogg").selectedOptions[0].text,dimensione:$("dim").selectedOptions[0].text,anni:p.anni,regione:`${p.regione} (operativa) / ${p.regLeg} (legale)`,settore:$("settore").selectedOptions[0].text,
   importo:p.importo,entro:$("entro").selectedOptions[0].text,avviato:p.avviato,spese:p.spese.map(s=>SL[s]).join(", "),forme:p.forme.map(f=>FL[f]).join(", "),
   compatibili:nm(2),condizioni:nm(1),consenso:true,pagina:location.href};
  $("lSend").disabled=true;out.textContent="Invio in corso…";
