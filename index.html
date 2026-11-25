@@ -75,6 +75,7 @@ details{margin-top:16px}
 summary{cursor:pointer;font-weight:600;min-height:44px;display:flex;align-items:center}
 .saved{display:flex;flex-wrap:wrap;gap:8px}
 .note{font-size:13px;color:var(--mute);margin-top:18px}
+.lead{position:relative;border-left:3px solid var(--coral)}#lOkTxt{white-space:normal;line-height:1.4;padding-block:8px}#lOkTxt a{color:inherit}
 .cta{border:1px solid var(--line);border-left:3px solid var(--coral);background:var(--bg);padding:clamp(22px,4vw,40px);display:flex;flex-wrap:wrap;gap:16px 32px;align-items:center;justify-content:space-between;margin-top:clamp(28px,4vw,48px)}
 .cta h2{font-size:clamp(24px,3vw,32px);line-height:1.15;max-width:22ch;margin:0}
 .cta p{color:var(--mute);margin:8px 0 0;max-width:52ch}
@@ -176,6 +177,24 @@ footer a{text-decoration:none}footer a:hover{color:var(--ink)}
     <label class="chip"><input type="checkbox" id="hide0" checked><span>Nascondi non compatibili</span></label>
   </div>
   <div id="out"><div class="card">Caricamento bandi…</div></div>
+
+  <form class="box lead" id="lead" novalidate style="margin-top:16px">
+    <p class="eyebrow">Ti aiuto io</p><h2>Vuoi una mano con questi bandi?</h2>
+    <p class="hint">Lasciami i tuoi contatti: ricevo il profilo che hai compilato e i bandi trovati, e ti ricontatto io.</p>
+    <div class="row">
+      <div><label for="lNome">Nome e cognome</label><input type="text" id="lNome" autocomplete="name" required></div>
+      <div><label for="lEmail">Email</label><input type="text" id="lEmail" inputmode="email" autocomplete="email" required></div>
+    </div>
+    <div class="row">
+      <div><label for="lTel">Telefono (facoltativo)</label><input type="text" id="lTel" inputmode="tel" autocomplete="tel"></div>
+      <div><label for="lAz">Azienda o progetto</label><input type="text" id="lAz" autocomplete="organization"></div>
+    </div>
+    <label for="lMsg">Messaggio (facoltativo)</label><textarea id="lMsg" rows="3" placeholder="Raccontami in due righe il progetto"></textarea>
+    <input type="text" id="lSito" tabindex="-1" autocomplete="off" aria-hidden="true" style="position:absolute;left:-9999px;width:1px;height:1px">
+    <div class="chips" style="margin-top:14px"><label class="chip"><input type="checkbox" id="lOk"><span id="lOkTxt">Ho letto l'informativa privacy e acconsento al trattamento dei dati per essere ricontattato/a</span></label></div>
+    <div class="tools"><button type="submit" id="lSend">Inviami la richiesta</button></div>
+    <p class="hint" id="lEsito" role="status"></p>
+  </form>
 
   <details>
     <summary>Aggiungi un bando che hai trovato</summary>
@@ -310,6 +329,26 @@ $("cbAdd").addEventListener("click",()=>{const nome=$("cbNome").value.trim();if(
 $("copy").addEventListener("click",async()=>{const p=prof(),res=results(p).filter(x=>x.l>0&&x.st.k!=="chiuso");
  const t=[`Pratica: ${p.cliente||"—"}`,`${$("sogg").selectedOptions[0].text} · ${p.regione} · ${eur(p.importo)}`,`Spese: ${p.spese.map(s=>SL[s]).join(", ")||"—"}`,""].concat(res.map(x=>`• ${x.b.nome} – ${LV[x.l]} (${x.b.statoTxt})\n  ${x.r.join("\n  ")}`)).join("\n");
  try{await navigator.clipboard.writeText(t);toast("Riepilogo copiato")}catch(e){toast("Copia non consentita qui")}});
+
+const ENDPOINT="";
+const PRIVACY_URL="";
+if(!ENDPOINT)$("lead").hidden=true;
+if(PRIVACY_URL)$("lOkTxt").innerHTML='Ho letto l\'<a href="'+esc(PRIVACY_URL)+'" target="_blank" rel="noopener">informativa privacy</a> e acconsento al trattamento dei dati per essere ricontattato/a';
+$("lead").addEventListener("submit",async e=>{e.preventDefault();const out=$("lEsito");
+ const nome=$("lNome").value.trim(),email=$("lEmail").value.trim();
+ if(!nome||!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(email)){out.textContent="Inserisci nome ed email validi.";return}
+ if(!$("lOk").checked){out.textContent="Per inviare la richiesta serve il consenso privacy.";return}
+ if(!ENDPOINT){out.textContent="Il modulo non è ancora attivo: scrivimi a consulting@ileniaenna.com.";return}
+ const p=prof(),res=results(p),nm=l=>res.filter(x=>x.l===l&&x.st.k!=="chiuso").map(x=>x.b.nome).join("; ");
+ const d={nome,email,telefono:$("lTel").value.trim(),azienda:$("lAz").value.trim(),messaggio:$("lMsg").value.trim(),sito:$("lSito").value,
+  soggetto:$("sogg").selectedOptions[0].text,dimensione:$("dim").selectedOptions[0].text,anni:p.anni,regione:p.regione,settore:$("settore").selectedOptions[0].text,
+  importo:p.importo,entro:$("entro").selectedOptions[0].text,avviato:p.avviato,spese:p.spese.map(s=>SL[s]).join(", "),forme:p.forme.map(f=>FL[f]).join(", "),
+  compatibili:nm(2),condizioni:nm(1),consenso:true,pagina:location.href};
+ $("lSend").disabled=true;out.textContent="Invio in corso…";
+ try{await fetch(ENDPOINT,{method:"POST",mode:"no-cors",headers:{"Content-Type":"text/plain;charset=utf-8"},body:JSON.stringify(d)});
+  out.textContent="Grazie! Ho ricevuto la tua richiesta e ti ricontatto a breve.";$("lead").reset()}
+ catch(err){out.textContent="Invio non riuscito. Riprova o scrivimi a consulting@ileniaenna.com."}
+ finally{$("lSend").disabled=false}});
 renderSaved();
 fetch("bandi.json",{cache:"no-store"}).then(r=>r.json()).then(j=>{B=j.bandi||[];AGG=j.aggiornato||"";
  const d=pd(AGG);if(d)$("agg").textContent=fd(d);render()}).catch(()=>{$("out").innerHTML='<div class="card">Non riesco a caricare l\'elenco dei bandi. Ricarica la pagina.</div>'});
