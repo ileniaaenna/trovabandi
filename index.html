@@ -218,7 +218,7 @@ footer a{text-decoration:none}footer a:hover{color:var(--ink)}
   <a class="btn" href="https://ileniaenna.com/#contatti">Parliamone in una call gratuita</a>
 </div>
 </div></div>
-<div class="wrap"><footer><img src="logo.svg" alt="iae – ilenia angela enna." style="height:96px;width:auto;display:block;margin-bottom:18px">© 2026 Ilenia Enna · <a href="mailto:consulting@ileniaenna.com">consulting@ileniaenna.com</a> · <a href="https://www.linkedin.com/in/ilenia-enna" target="_blank" rel="noopener">LinkedIn</a></footer></div>
+<div class="wrap"><footer><img src="logo.svg" alt="iae – ilenia angela enna." style="height:96px;width:auto;display:block;margin-bottom:18px">© 2026 Ilenia Enna · <a href="mailto:consulting@ileniaenna.com">consulting@ileniaenna.com</a> · <a href="https://www.linkedin.com/in/ilenia-enna" target="_blank" rel="noopener">LinkedIn</a> · <a href="privacy.html">Privacy</a></footer></div>
 <div class="toast" id="toast"></div>
 
 <script>
@@ -331,7 +331,7 @@ $("copy").addEventListener("click",async()=>{const p=prof(),res=results(p).filte
  try{await navigator.clipboard.writeText(t);toast("Riepilogo copiato")}catch(e){toast("Copia non consentita qui")}});
 
 const ENDPOINT="";
-const PRIVACY_URL="";
+const PRIVACY_URL="privacy.html";
 if(!ENDPOINT)$("lead").hidden=true;
 if(PRIVACY_URL)$("lOkTxt").innerHTML='Ho letto l\'<a href="'+esc(PRIVACY_URL)+'" target="_blank" rel="noopener">informativa privacy</a> e acconsento al trattamento dei dati per essere ricontattato/a';
 $("lead").addEventListener("submit",async e=>{e.preventDefault();const out=$("lEsito");

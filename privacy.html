@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Informativa privacy – Trova bandi</title>
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+/* VOICE: lo stesso di ileniaenna.com, diretto e professionale, in "tu"
+   IDEA: una sezione in più del sito: strumento di pre-istruttoria bandi
+   PICTURE: il modulo stesso, con l'esito grande accanto
+   COLOUR and TYPE: scala di grigi del sito (oklch 18–97%), CTA bianca; Space Grotesk 600 + Manrope
+   LAYOUT: header del sito, hero con etichette, modulo a sinistra ed esito a destra, footer del sito */
+:root{color-scheme:dark;--bg:oklch(18% 0 0);--sec:oklch(20.5% 0 0);--card:oklch(23.5% 0 0);--acc:oklch(29% 0 0);--line:oklch(38% 0 0);--mute:oklch(77% 0 0);--ink:oklch(97% 0 0);--white:oklch(100% 0 0);--dark:oklch(16% 0 0);--tagline:oklab(0.92 0 0 / .3);--coral:#D9473B}
+*{box-sizing:border-box;min-width:0}
+body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.6 Manrope,system-ui,sans-serif;overflow-x:clip}
+h1,h2,h3,.big,.brand{font-family:"Space Grotesk",system-ui,sans-serif;font-weight:600}
+a{color:inherit}
+.wrap{max-width:1240px;margin:0 auto;padding:0 max(4vw,16px)}
+.top{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:24px 0}
+.brand{text-decoration:none;display:inline-flex;align-items:center}.brand img{height:30px;width:auto;display:block}
+.top nav{display:flex;align-items:center;gap:24px;font-size:14px}
+.top nav a{text-decoration:none;color:var(--mute)}.top nav a:hover{color:var(--ink)}
+.btn,button{display:inline-flex;align-items:center;justify-content:center;font:600 14px Manrope,sans-serif;min-height:44px;padding:8px 18px;border-radius:2px;border:1px solid var(--white);background:var(--white);color:var(--dark);cursor:pointer;text-decoration:none}
+.btn:hover,button:hover{background:oklch(87% 0 0)}
+.top nav a.btn{color:var(--dark)}
+button.ghost,.btn.ghost{background:transparent;color:var(--ink);border-color:var(--line)}
+button.ghost:hover{background:var(--acc)}
+button.small{min-height:36px;padding:4px 12px;font-size:13px}
+@media(max-width:600px){.top nav a:not(.btn){display:none}}
+.hero-s{padding:clamp(24px,5vw,64px) 0 clamp(24px,4vw,40px)}
+.tags{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:20px}
+.tag{font-size:12px;font-weight:600;text-transform:uppercase;padding:6px 12px;background:var(--acc);border:1px solid var(--tagline)}
+h1{font-size:clamp(34px,5.4vw,60px);line-height:1.1;margin:0;max-width:18ch;text-wrap:balance}
+h1 em{font-style:normal;color:var(--white)}.dot{color:var(--coral)}
+.sub{color:var(--mute);margin:18px 0 0;max-width:62ch;font-size:17px}
+.band{background:var(--sec);border-top:1px solid var(--line);padding:clamp(24px,4vw,48px) 0}
+h2{font-size:22px;margin:0 0 4px}
+.eyebrow{font-size:12px;font-weight:600;text-transform:uppercase;color:var(--mute);margin:0 0 6px}.eyebrow::after{content:".";color:var(--coral);font-size:16px;line-height:0}
+.grid{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.15fr);gap:28px;align-items:start}
+@media(max-width:900px){.grid{grid-template-columns:minmax(0,1fr)}}
+.box{border:1px solid var(--line);background:var(--bg);padding:22px;margin-bottom:16px}
+.hint{font-size:14px;color:var(--mute);margin:0 0 8px}
+label{display:block;font-size:14px;color:var(--mute);margin:12px 0 4px}
+select,input[type=text],input[type=number],textarea{width:100%;font:16px Manrope,sans-serif;padding:10px 12px;min-height:44px;border:1px solid var(--line);border-radius:2px;background:var(--card);color:var(--ink)}
+:focus-visible{outline:2px solid var(--coral);outline-offset:2px}
+.row{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:12px}
+@media(max-width:480px){.row{grid-template-columns:minmax(0,1fr)}}
+.grp{font-weight:600;font-size:12px;text-transform:uppercase;margin:16px 0 8px;color:var(--mute)}
+.chips{display:flex;flex-wrap:wrap;gap:8px}
+.chip{position:relative;margin:0}
+.chip input{position:absolute;opacity:0;inset:0}
+.chip span{display:inline-flex;align-items:center;min-height:40px;padding:6px 14px;border:1px solid var(--line);border-radius:2px;font-size:14px;cursor:pointer;background:var(--card);color:var(--ink)}
+.chip input:checked+span{background:var(--white);color:var(--dark);border-color:var(--white);font-weight:600}
+.chip input:focus-visible+span{outline:2px solid var(--coral);outline-offset:2px}
+.sticky{position:sticky;top:16px}
+@media(max-width:900px){.sticky{position:static}}
+.hero{background:var(--card);border:1px solid var(--line);padding:20px 22px;display:grid;grid-template-columns:auto minmax(0,1fr);gap:4px 18px;align-items:center}
+.big{font-size:clamp(52px,7vw,76px);line-height:1;grid-row:span 2;color:var(--white)}
+.hero .big{font-size:clamp(52px,7vw,76px);color:var(--coral)}.hero b{font-size:18px;font-family:"Space Grotesk",sans-serif;font-weight:600}.hero span{font-size:14px;color:var(--mute)}
+.tools{display:flex;flex-wrap:wrap;gap:8px;margin:14px 0}
+.card{border:1px solid var(--line);padding:18px;margin-top:12px;background:var(--card)}
+.card h3{margin:0;font-size:19px;line-height:1.25}
+.meta{display:flex;flex-wrap:wrap;gap:6px;margin:10px 0}
+.pill{font-size:11px;font-weight:600;text-transform:uppercase;padding:5px 10px;border:1px solid var(--tagline);background:var(--acc);white-space:nowrap}
+.l2{background:var(--white);color:var(--dark);border-color:var(--white)}.l2::before{content:"";display:inline-block;width:7px;height:7px;border-radius:50%;background:var(--coral);margin-right:6px;vertical-align:1px}
+.l1{background:transparent;color:var(--white);border-color:var(--white)}
+.l0{background:transparent;color:var(--mute);border-color:var(--line)}
+.card.off{opacity:.6}
+.card ul{margin:8px 0 0;padding-left:18px}.card li{margin:3px 0}
+.cov{font-size:14px;color:var(--mute);margin:4px 0 0}
+details{margin-top:16px}
+summary{cursor:pointer;font-weight:600;min-height:44px;display:flex;align-items:center}
+.saved{display:flex;flex-wrap:wrap;gap:8px}
+.note{font-size:13px;color:var(--mute);margin-top:18px}
+.lead{position:relative;border-left:3px solid var(--coral)}#lOkTxt{white-space:normal;line-height:1.4;padding-block:8px}#lOkTxt a{color:inherit}
+.cta{border:1px solid var(--line);border-left:3px solid var(--coral);background:var(--bg);padding:clamp(22px,4vw,40px);display:flex;flex-wrap:wrap;gap:16px 32px;align-items:center;justify-content:space-between;margin-top:clamp(28px,4vw,48px)}
+.cta h2{font-size:clamp(24px,3vw,32px);line-height:1.15;max-width:22ch;margin:0}
+.cta p{color:var(--mute);margin:8px 0 0;max-width:52ch}
+footer{border-top:1px solid var(--line);padding:24px 0;font-size:14px;color:var(--mute)}
+footer a{text-decoration:none}footer a:hover{color:var(--ink)}
+.toast{position:fixed;left:50%;bottom:20px;transform:translateX(-50%);background:var(--white);color:var(--dark);padding:10px 16px;border-radius:2px;font-size:14px;font-weight:600;opacity:0;transition:opacity .2s;pointer-events:none}
+.toast.on{opacity:1}
+@media(prefers-reduced-motion:reduce){.toast{transition:none}}
+</style>
+<style>.doc{max-width:760px;padding:clamp(24px,5vw,56px) 0 40px}.doc h1{font-size:clamp(30px,4.4vw,44px);max-width:none}.doc h2{font-size:20px;margin:32px 0 8px}.doc p,.doc li{color:var(--ink);max-width:70ch}.doc ul{padding-left:20px}.doc .muted{color:var(--mute)}</style>
+</head>
+<body>
+<div class="wrap">
+<header class="top">
+  <a class="brand" href="https://ileniaenna.com" aria-label="iae – Ilenia Angela Enna, torna al sito"><img src="logo-mark.svg" alt="iae." width="58" height="31"></a>
+  <nav><a href="index.html">Trova bandi</a><a class="btn" href="https://ileniaenna.com/#contatti">Prenota una call</a></nav>
+</header>
+<main class="doc">
+<p class="eyebrow">Regolamento UE 2016/679 (GDPR), art. 13</p>
+<h1>Informativa privacy<span class="dot">.</span></h1>
+<p class="muted">Ultimo aggiornamento: 25 novembre 2026</p>
+
+<h2>Titolare del trattamento</h2>
+<p>Ilenia Angela Enna – Viale Brambilla 66, 27100 Pavia (PV) – P.IVA IT03051040180.<br>
+Email: <a href="mailto:consulting@ileniaenna.com">consulting@ileniaenna.com</a></p>
+
+<h2>Quali dati tratto</h2>
+<ul>
+<li><b>Dati che inserisci nel modulo “Vuoi una mano con questi bandi?”:</b> nome e cognome, email, telefono (facoltativo), azienda o progetto, messaggio.</li>
+<li><b>Dati del profilo compilato nello strumento</b>, inviati insieme alla richiesta: tipo di soggetto, dimensione, anni di attività, regione, settore, investimento previsto, tempistiche, tipologie di spesa e bandi risultati compatibili.</li>
+<li><b>Dati tecnici di navigazione</b> trattati dai fornitori del servizio (ad esempio l'indirizzo IP), necessari a mostrare la pagina.</li>
+</ul>
+<p>Se usi lo strumento senza inviare il modulo, i dati inseriti restano nel tuo browser (memoria locale del dispositivo) e non vengono trasmessi a me. Puoi cancellarli in qualsiasi momento dalle impostazioni del browser.</p>
+
+<h2>Perché li tratto e su quale base</h2>
+<ul>
+<li><b>Ricontattarti e darti un primo orientamento sui bandi</b> che mi hai chiesto: base giuridica è l'esecuzione di misure precontrattuali adottate su tua richiesta (art. 6.1.b GDPR).</li>
+<li><b>Adempiere a obblighi di legge</b>, se nasce un rapporto professionale (art. 6.1.c GDPR).</li>
+</ul>
+<p>Non uso i tuoi dati per newsletter o marketing e non li vendo né li cedo a terzi. Lo strumento non prende decisioni automatizzate che producano effetti giuridici su di te: i risultati sono un orientamento indicativo.</p>
+
+<h2>Il conferimento è obbligatorio?</h2>
+<p>No. Nome ed email sono necessari solo per poterti ricontattare: senza, non posso dare seguito alla richiesta.</p>
+
+<h2>Chi tratta i dati per mio conto</h2>
+<ul>
+<li><b>Google</b> (Google Workspace / Google Sheets e Gmail), dove vengono registrate le richieste e da cui ricevo l'avviso via email.</li>
+<li><b>GitHub</b> (GitHub Pages), che ospita questa pagina.</li>
+<li><b>Google Fonts</b>, per i caratteri tipografici della pagina.</li>
+</ul>
+<p>Questi fornitori possono trattare dati anche fuori dall'Unione europea, negli Stati Uniti, sulla base del EU-U.S. Data Privacy Framework o delle clausole contrattuali standard approvate dalla Commissione europea.</p>
+
+<h2>Per quanto tempo li conservo</h2>
+<p>Per il tempo necessario a gestire la tua richiesta e comunque non oltre <b>24 mesi</b> dall'ultimo contatto. Se diventi cliente, i dati sono conservati per la durata del rapporto e per i tempi previsti dalla legge (ad esempio 10 anni per i documenti fiscali).</p>
+
+<h2>I tuoi diritti</h2>
+<p>Puoi chiedere in qualsiasi momento l'accesso ai tuoi dati, la rettifica, la cancellazione, la limitazione del trattamento, la portabilità e opporti al trattamento (artt. 15–22 GDPR), scrivendo a <a href="mailto:consulting@ileniaenna.com">consulting@ileniaenna.com</a>. Hai anche il diritto di proporre reclamo al Garante per la protezione dei dati personali (<a href="https://www.garanteprivacy.it" target="_blank" rel="noopener">garanteprivacy.it</a>).</p>
+
+<h2>Cookie</h2>
+<p>Questa pagina non usa cookie di profilazione né strumenti di statistica. Usa solo la memoria locale del browser per ricordare le pratiche che salvi tu.</p>
+</main>
+<footer>© 2026 Ilenia Enna · <a href="mailto:consulting@ileniaenna.com">consulting@ileniaenna.com</a> · <a href="index.html">Torna a Trova bandi</a></footer>
+</div>
+</body>
+</html>
