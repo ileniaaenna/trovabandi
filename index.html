@@ -277,7 +277,7 @@ function render(){
  $("ns").textContent=`${cond} con condizioni · ${next} in apertura`;
  const fpOnly=$("solofp").checked,pool=fpOnly?res.filter(x=>x.b.forma.includes("fp")):res;
  const show=$("hide0").checked?pool.filter(x=>x.l>0):pool;
- $("out").innerHTML=show.length?show.map(x=>{const b=x.b,st=x.st.k==="chiuso"?"Chiuso":x.st.k==="prossimo"?"In apertura":"Aperto";
+ $("out").innerHTML=show.length?show.map(x=>{const b=x.b,st=x.st.k==="chiuso"?(b.ciclico?"Ciclico – prossima edizione":"Chiuso"):x.st.k==="prossimo"?"In apertura":"Aperto";
   return `<article class="card${x.l===0||x.st.k==="chiuso"?" off":""}"><h3>${esc(b.nome)}</h3>
   <div class="meta"><span class="pill l${x.l}">${LV[x.l]}</span><span class="pill">${st}</span>${b.forma.map(f=>`<span class="pill">${FL[f]}</span>`).join("")}</div>
   <div class="cov">${esc(b.ente)} · ${esc(b.statoTxt)}</div>${b.formaTxt?`<div class="cov">${esc(b.formaTxt)}</div>`:""}
