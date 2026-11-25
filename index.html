@@ -330,7 +330,7 @@ $("copy").addEventListener("click",async()=>{const p=prof(),res=results(p).filte
  const t=[`Pratica: ${p.cliente||"—"}`,`${$("sogg").selectedOptions[0].text} · ${p.regione} · ${eur(p.importo)}`,`Spese: ${p.spese.map(s=>SL[s]).join(", ")||"—"}`,""].concat(res.map(x=>`• ${x.b.nome} – ${LV[x.l]} (${x.b.statoTxt})\n  ${x.r.join("\n  ")}`)).join("\n");
  try{await navigator.clipboard.writeText(t);toast("Riepilogo copiato")}catch(e){toast("Copia non consentita qui")}});
 
-const ENDPOINT="";
+const ENDPOINT="https://script.google.com/macros/s/AKfycbznrq5EVxfvzK5a4kvxk28goygD8Bvt6xe9pria0CLgfkgkJB4DX_-bO9km5taheAlu/exec";
 const PRIVACY_URL="privacy.html";
 if(!ENDPOINT)$("lead").hidden=true;
 if(PRIVACY_URL)$("lOkTxt").innerHTML='Ho letto l\'<a href="'+esc(PRIVACY_URL)+'" target="_blank" rel="noopener">informativa privacy</a> e acconsento al trattamento dei dati per essere ricontattato/a';
