@@ -1,5 +1,8 @@
 # Aggiornamenti
 
+## 26/11/2026 (fundraising)
+- Aggiunta la categoria "Fundraising / capitale privato" con: Private Credit per la crescita delle imprese (segnalazione diretta di Ilenia, voce manuale), CDP Venture Capital, Equity crowdfunding.
+
 ## 26/11/2026
 - Aggiunto: Digitalizzazione ed efficientamento produttivo delle imprese – Piemonte (sportello fino al 29/10/2028). Fonte: regione.piemonte.it
 - Aggiunto: Attrazione e sostegno agli investimenti, Bando B occupazione – Piemonte (fino al 11/02/2027). Fonti: regione.piemonte.it, finpiemonte.it

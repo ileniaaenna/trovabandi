@@ -1042,6 +1042,106 @@
     "Va presentato insieme alla domanda sul Bando A (investimenti), entro 7 giorni.",
     "Incremento minimo: +1 ULA micro, +2 piccole, +3 medie, da mantenere 36 mesi."
    ]
+  },
+  {
+   "id": "private-credit-sgr",
+   "manuale": true,
+   "nome": "Private Credit per la crescita delle imprese",
+   "ente": "Fondo di una SGR partner, tramite advisor di corporate finance",
+   "forma": [
+    "priv"
+   ],
+   "formaTxt": "Debito privato senior o unitranche, durata fino a 5–7 anni, complementare al credito bancario",
+   "apre": null,
+   "chiude": null,
+   "statoTxt": "Operativo da novembre 2026 – valutazione caso per caso",
+   "sogg": [
+    "imp",
+    "pmii",
+    "gr"
+   ],
+   "dim": [
+    "piccola",
+    "media",
+    "grande"
+   ],
+   "spese": [
+    "mac",
+    "b40",
+    "ma",
+    "intl",
+    "en",
+    "rif"
+   ],
+   "agevMin": 5000000,
+   "agevMax": 10000000,
+   "note": [
+    "Per aziende solide con buona marginalità, cassa ricorrente e struttura finanziaria sostenibile.",
+    "Finanzia investimenti produttivi, acquisizioni, internazionalizzazione, progetti ESG, rifinanziamenti e passaggi generazionali.",
+    "Per una verifica di prefattibilità riservata usa il modulo qui sotto."
+   ],
+   "min": 5000000
+  },
+  {
+   "id": "cdp-venture-capital",
+   "nome": "CDP Venture Capital – fondi per startup e PMI innovative",
+   "ente": "CDP Venture Capital SGR",
+   "forma": [
+    "priv"
+   ],
+   "formaTxt": "Investimenti in capitale di rischio, diretti o tramite fondi e acceleratori partecipati",
+   "apre": null,
+   "chiude": null,
+   "statoTxt": "Operativo in continuo",
+   "sogg": [
+    "start",
+    "pmii"
+   ],
+   "spese": [
+    "rs",
+    "sw",
+    "pers",
+    "intl",
+    "circ",
+    "mac"
+   ],
+   "link": "https://www.cdp.it/en/venture_capital.page",
+   "note": [
+    "Comprende più fondi (Acceleratori, Technology Transfer, Evoluzione, Rilancio Startup, VenturItaly e altri).",
+    "Il 19/10/2026 è stato annunciato il Fondo Acceleratori II: per le startup pre-seed e seed l'accesso passa dai fondi e dai programmi di accelerazione selezionati.",
+    "Per il Fondo Rilancio Startup la startup viene segnalata da un investitore qualificato (VC, business angel, acceleratore)."
+   ]
+  },
+  {
+   "id": "equity-crowdfunding",
+   "nome": "Equity crowdfunding",
+   "ente": "Piattaforme autorizzate ECSP (Consob – Banca d'Italia)",
+   "forma": [
+    "priv"
+   ],
+   "formaTxt": "Raccolta di capitale da investitori tramite piattaforme online autorizzate",
+   "apre": null,
+   "chiude": null,
+   "statoTxt": "Strumento sempre disponibile",
+   "sogg": [
+    "start",
+    "pmii",
+    "imp"
+   ],
+   "spese": [
+    "rs",
+    "sw",
+    "pers",
+    "intl",
+    "circ",
+    "mac",
+    "mur"
+   ],
+   "link": "https://www.bancaditalia.it/compiti/vigilanza/accesso-mercato/servizi-crowdfunding/",
+   "note": [
+    "In Italia le piattaforme autorizzate sono 37, di cui 30 attive negli ultimi 12 mesi: verifica sempre l'autorizzazione.",
+    "Mercato in calo nel 2026: serve una campagna ben preparata e una community di investitori."
+   ]
   }
  ]
 }

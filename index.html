@@ -182,6 +182,7 @@ footer a{text-decoration:none}footer a:hover{color:var(--ink)}
   <div class="saved" id="saved"></div>
   <div class="filt chips" style="margin-top:12px">
     <label class="chip"><input type="checkbox" id="solofp"><span>Solo fondo perduto</span></label>
+    <label class="chip"><input type="checkbox" id="solopriv"><span>Solo fundraising</span></label>
     <label class="chip"><input type="checkbox" id="hide0" checked><span>Nascondi non compatibili</span></label>
   </div>
   <div id="out"><div class="card">Caricamento bandi…</div></div>
@@ -237,9 +238,9 @@ const CN=REG.filter(r=>!SUD.includes(r));
 const SPESE=[["Immobilizzazioni materiali",[["mac","Macchinari, impianti, attrezzature"],["b40","Beni 4.0 / automazione"],["hw","Hardware e arredi"]]],
  ["Immobilizzazioni immateriali",[["sw","Software, digitale, AI"],["ip","Brevetti, marchi, design"],["cons","Consulenze e servizi"],["rs","Ricerca e sviluppo"],["form","Formazione"],["intl","Internazionalizzazione"]]],
  ["Immobili",[["acq","Acquisto immobile"],["mur","Opere murarie e ristrutturazione"],["en","Efficienza energetica e rinnovabili"]]],
- ["Altro",[["circ","Liquidità e capitale circolante"],["pers","Personale e assunzioni"],["sic","Sicurezza sul lavoro"]]]];
+ ["Altro",[["circ","Liquidità e capitale circolante"],["pers","Personale e assunzioni"],["sic","Sicurezza sul lavoro"],["ma","Acquisizioni e M&A"],["rif","Rifinanziamento e operazioni straordinarie"]]]];
 const SL=Object.fromEntries(SPESE.flatMap(g=>g[1]));
-const FORME=[["fp","Fondo perduto"],["tasso","Finanziamento agevolato"],["fisc","Credito d'imposta / fiscale"],["gar","Garanzia"]];
+const FORME=[["fp","Fondo perduto"],["tasso","Finanziamento agevolato"],["fisc","Credito d'imposta / fiscale"],["gar","Garanzia"],["priv","Fundraising / capitale privato"]];
 const FL=Object.fromEntries(FORME);
 const IMPRESE=["imp","start","pmii","gr"],PMI=["micro","piccola","media"],MP=["micro","piccola"];
 
@@ -299,24 +300,25 @@ function amt(b,p){if(!b.perc&&!b.agevMax)return null;
 let custom=store.get("tb2_custom",[]);
 function results(p){
  let res=B.filter(b=>!b.reg||b.reg.includes(p.regione)||b.reg.includes(p.regLeg)||b.reg.length>1).map(b=>check(b,p));
- if(!["Lombardia","Emilia-Romagna"].includes(p.regione))res.push({b:{nome:`Bandi regionali e camerali – ${p.regione}`,ente:"Regione e Camera di commercio",forma:[],formaTxt:"",statoTxt:"Da verificare",spese:[]},l:1,r:["Controlla il portale bandi della Regione e della Camera di commercio: qui non sono ancora mappati."],st:{k:"aperto"}});
+ if(!B.some(b=>b.reg&&b.reg.length<5&&b.reg.includes(p.regione)))res.push({b:{nome:`Bandi regionali e camerali – ${p.regione}`,ente:"Regione e Camera di commercio",forma:[],formaTxt:"",statoTxt:"Da verificare",spese:[]},l:1,r:["Controlla il portale bandi della Regione e della Camera di commercio: qui non sono ancora mappati."],st:{k:"aperto"}});
  custom.forEach((c,i)=>{if(c.regione!=="Tutte"&&c.regione!==p.regione)return;const hit=c.spese.filter(s=>p.spese.includes(s));const ch=c.chiude?new Date(c.chiude):null;
   res.push({b:{nome:c.nome,ente:"Aggiunto da te",forma:[],formaTxt:"",statoTxt:ch?`Scade il ${fd(ch)}`:"Scadenza non indicata",spese:c.spese,link:c.link},l:hit.length?1:0,r:[c.note||"Nessuna nota",hit.length?`Copre: ${hit.map(s=>SL[s]).join(", ")}.`:"Non copre le spese selezionate."],st:{k:ch&&ch<new Date()?"chiuso":"aperto"},ci:i})});
  const o={aperto:0,prossimo:1,chiuso:2};return res.sort((a,b)=>b.l-a.l||o[a.st.k]-o[b.st.k]||a.b.nome.localeCompare(b.b.nome));
 }
 function render(){
  const p=prof(),res=results(p);
- const R0=$("solofp").checked?res.filter(x=>x.b.forma.includes("fp")):res;
+ const fk=[$("solofp").checked&&"fp",$("solopriv").checked&&"priv"].filter(Boolean),flt=a=>fk.length?a.filter(x=>x.b.forma.some(f=>fk.includes(f))):a;
+ const R0=flt(res);
  const ok=R0.filter(x=>x.l===2&&x.st.k==="aperto").length,next=R0.filter(x=>x.l>0&&x.st.k==="prossimo").length,cond=R0.filter(x=>x.l===1&&x.st.k==="aperto").length;
- $("n").textContent=ok;$("nl").textContent=(ok===1?"bando compatibile e aperto":"bandi compatibili e aperti")+($("solofp").checked?" a fondo perduto":"");
+ $("n").textContent=ok;$("nl").textContent=(ok===1?"bando compatibile e aperto":"bandi compatibili e aperti")+(fk.length?" ("+fk.map(f=>f==="fp"?"fondo perduto":"fundraising").join(" + ")+")":"");
  $("ns").textContent=`${cond} con condizioni · ${next} in apertura`;
  const ests=R0.filter(x=>x.l===2&&x.st.k==="aperto").map(x=>amt(x.b,p)).filter(a=>a&&a.est).map(a=>a.est);
  $("na").innerHTML=ests.length?`Puoi richiedere <b>${ests.length>1?"da "+eur(Math.min(...ests))+" a ":"fino a "}${eur(Math.max(...ests))}</b> <span>secondo il bando scelto, stima sul tuo investimento</span>`:"";$("na").hidden=!ests.length;
- const fpOnly=$("solofp").checked,pool=fpOnly?res.filter(x=>x.b.forma.includes("fp")):res;
+ const pool=R0;
  const show=$("hide0").checked?pool.filter(x=>x.l>0):pool;
  $("out").innerHTML=show.length?show.map(x=>{const b=x.b,st=x.st.k==="chiuso"?(b.ciclico?"Ciclico – prossima edizione":"Chiuso"):x.st.k==="prossimo"?"In apertura":"Aperto";
   const a=amt(b,p);
-  const box=a?`<div class="amt"><small>Puoi richiedere${b.forma.includes("fp")&&!b.forma.includes("tasso")?" a fondo perduto":b.forma.includes("tasso")&&!b.forma.includes("fp")?" come finanziamento":""}</small>${a.est?`<b>≈ ${eur(a.est)}</b>`:""}${a.min||a.max?`<span>${a.min?"min "+eur(a.min):""}${a.min&&a.max?" · ":""}${a.max?"max "+eur(a.max):""}</span>`:""}${a.perc?`<span>copertura fino al ${a.perc}%</span>`:""}</div>`:"";
+  const box=a?`<div class="amt"><small>Puoi richiedere${b.forma.includes("fp")&&!b.forma.includes("tasso")?" a fondo perduto":b.forma.includes("tasso")&&!b.forma.includes("fp")?" come finanziamento":b.forma.includes("priv")?" (ticket)":""}</small>${a.est?`<b>≈ ${eur(a.est)}</b>`:""}${a.min||a.max?`<span>${a.min?"min "+eur(a.min):""}${a.min&&a.max?" · ":""}${a.max?"max "+eur(a.max):""}</span>`:""}${a.perc?`<span>copertura fino al ${a.perc}%</span>`:""}</div>`:"";
   return `<article class="card${x.l===0||x.st.k==="chiuso"?" off":""}"><div class="chead"><div><h3>${esc(b.nome)}</h3>
   <div class="meta"><span class="pill l${x.l}">${LV[x.l]}</span><span class="pill">${st}</span>${b.forma.map(f=>`<span class="pill">${FL[f]}</span>`).join("")}</div></div>${box}</div>
   <div class="cov">${esc(b.ente)} · ${esc(b.statoTxt)}</div>${b.formaTxt?`<div class="cov">${esc(b.formaTxt)}</div>`:""}
@@ -336,7 +338,7 @@ $("cbSpese").innerHTML=SPESE.flatMap(g=>g[1]).map(([v,l])=>chip("cb",v,l,false))
 $("forme").innerHTML=FORME.map(([v,l])=>chip("fo",v,l,false)).join("");
 const d=store.get("tb2_draft",null);if(d&&d.spese)apply(d);
 
-$("f").addEventListener("input",render);$("f").addEventListener("submit",e=>e.preventDefault());$("hide0").addEventListener("change",render);$("solofp").addEventListener("change",render);
+$("f").addEventListener("input",render);$("f").addEventListener("submit",e=>e.preventDefault());$("hide0").addEventListener("change",render);$("solofp").addEventListener("change",render);$("solopriv").addEventListener("change",render);
 $("save").addEventListener("click",()=>{const p=prof(),n=p.cliente||"Pratica senza nome",s=store.get("tb2_pratiche",{});s[n]=p;toast(store.set("tb2_pratiche",s)?"Pratica salvata":"Salvataggio non disponibile");renderSaved()});
 $("reset").addEventListener("click",()=>{$("f").reset();$("regione").value="Lombardia";$("regLeg").value="Lombardia";document.querySelectorAll("#spese input").forEach(i=>i.checked=i.value==="mac");render()});
 $("saved").addEventListener("click",e=>{const s=store.get("tb2_pratiche",{}),L=e.target.dataset.load,R=e.target.dataset.rm;if(L&&s[L]){apply(s[L]);render();toast("Pratica caricata")}if(R){delete s[R];store.set("tb2_pratiche",s);renderSaved()}});
