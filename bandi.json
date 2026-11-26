@@ -1,5 +1,5 @@
 {
- "aggiornato": "2026-11-25",
+ "aggiornato": "2026-11-26",
  "bandi": [
   {
    "nome": "Nuova Sabatini",
@@ -311,7 +311,7 @@
    "formaTxt": "Fondo perduto fino a 140.000 €",
    "apre": "2026-11-25",
    "chiude": null,
-   "statoTxt": "Sportello dal 25/11/2026 ore 12 – rischio click day",
+   "statoTxt": "Sportello aperto dal 25/11/2026 ore 12 fino a esaurimento (dotazione 20 mln) – rischio esaurimento rapido",
    "sogg": [
     "imp",
     "start",
@@ -329,7 +329,8 @@
    "pre": true,
    "link": "https://www.invitalia.it",
    "note": [
-    "Servizi per valorizzare economicamente un brevetto."
+    "Servizi per valorizzare economicamente un brevetto.",
+    "Copertura fino al 100% se contitolari del brevetto con un ente pubblico di ricerca."
    ],
    "id": "brevetti",
    "perc": 80,
@@ -374,7 +375,7 @@
    "formaTxt": "Fondo perduto per valorizzare disegni e modelli",
    "apre": "2026-12-17",
    "chiude": null,
-   "statoTxt": "Sportello dal 17/12/2026",
+   "statoTxt": "Sportello dal 17/12/2026 ore 12 fino a esaurimento",
    "sogg": [
     "imp",
     "start",
@@ -390,7 +391,9 @@
     "cons"
    ],
    "link": "https://www.disegnipiu2026.it",
-   "note": [],
+   "note": [
+    "Dotazione 10 milioni di euro."
+   ],
    "id": "disegni"
   },
   {
@@ -528,7 +531,7 @@
    ],
    "formaTxt": "Credito d'imposta su beni strumentali e immobili strumentali",
    "chiude": null,
-   "statoTxt": "Da verificare la finestra di comunicazione 2026",
+   "statoTxt": "Comunicazione preventiva 2026 chiusa (1/06/2026); comunicazione integrativa sugli investimenti realizzati entro il 17/01/2027",
    "sogg": [
     "imp",
     "start",
@@ -964,6 +967,81 @@
     "Progetti di ricerca e sviluppo nella filiera automotive: verifica la soglia minima di progetto."
    ],
    "perc": 45
+  },
+  {
+   "id": "piemonte-digitalizzazione-efficientamento",
+   "nome": "Digitalizzazione ed efficientamento produttivo delle imprese",
+   "ente": "Regione Piemonte – Finpiemonte (PR FESR 2021-2027)",
+   "forma": [
+    "tasso",
+    "fp"
+   ],
+   "formaTxt": "Finanziamento fino al 100% (70% a tasso zero + 30% bancario) + sovvenzione a fondo perduto per le PMI",
+   "statoTxt": "Sportello aperto (Linea B dal 7/07/2026, Linea A dal 13/10/2026) fino al 29/10/2028 salvo esaurimento",
+   "apre": "2026-07-07",
+   "chiude": "2028-10-29",
+   "ciclico": false,
+   "sogg": [
+    "imp",
+    "start",
+    "pmii"
+   ],
+   "dim": [
+    "micro",
+    "piccola",
+    "media"
+   ],
+   "reg": [
+    "Piemonte"
+   ],
+   "spese": [
+    "b40",
+    "hw",
+    "sw",
+    "mac",
+    "cons"
+   ],
+   "perc": 100,
+   "link": "https://www.regione.piemonte.it/web/temi/fondi-progetti-europei/fondo-europeo-sviluppo-regionale-fesr/agevolazioni-per-progetti-digitalizzazione-efficientamento-produttivo-delle-imprese",
+   "note": [
+    "Linea A: digitalizzazione; Linea B: efficientamento produttivo.",
+    "Dotazione 78 milioni; le mid-cap accedono solo al finanziamento sulle sub-linee green."
+   ]
+  },
+  {
+   "id": "piemonte-attrazione-investimenti-bando-b",
+   "nome": "Attrazione e sostegno agli investimenti – Bando B (occupazione)",
+   "ente": "Regione Piemonte – Finpiemonte (PR FESR 2021-2027)",
+   "forma": [
+    "fp"
+   ],
+   "formaTxt": "Sovvenzione de minimis fino a 25.000 € per ogni nuova ULA, max 200.000 €",
+   "statoTxt": "Sportello dal 3/02/2026 al 11/02/2027 salvo esaurimento",
+   "apre": "2026-02-03",
+   "chiude": "2027-02-11",
+   "ciclico": false,
+   "sogg": [
+    "imp",
+    "pmii"
+   ],
+   "dim": [
+    "micro",
+    "piccola",
+    "media"
+   ],
+   "reg": [
+    "Piemonte"
+   ],
+   "spese": [
+    "pers"
+   ],
+   "agevMax": 200000,
+   "pre": true,
+   "link": "https://www.regione.piemonte.it/web/temi/fondi-progetti-europei/fondo-europeo-sviluppo-regionale-fesr/programma-regionale-fesr-2021-2027/misura-sullattrazione-sostegno-agli-investimenti",
+   "note": [
+    "Va presentato insieme alla domanda sul Bando A (investimenti), entro 7 giorni.",
+    "Incremento minimo: +1 ULA micro, +2 piccole, +3 medie, da mantenere 36 mesi."
+   ]
   }
  ]
 }
